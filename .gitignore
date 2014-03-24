@@ -22,4 +22,6 @@ sftp-config.json
 error_log
 /vendor
 /composer.lock
+/node_modules
+/bower_components
 *.sublime-*
