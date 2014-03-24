@@ -1,0 +1,19 @@
+{
+  "name": "MissBShops4You.com",
+  "version": "0.0.1-dev",
+  "authors": [
+    "Matthew Davies <daviesgeek@icloud.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}
