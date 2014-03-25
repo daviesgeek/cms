@@ -2,14 +2,15 @@
 
 class LoginController extends \BaseController {
 
+
+	public $title = 'Login';
+
 	/**
-	 * Display a listing of the resource.
-	 *
+	 * User facing login page
 	 * @return Response
 	 */
-	public function index()
-	{
-		return View::make('login');
+	public function index() {
+		return View::make('login')->with('title', $this->title);
 	}
 
 	/**
@@ -17,8 +18,7 @@ class LoginController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
+	public function create() {
 		//
 	}
 
@@ -27,8 +27,7 @@ class LoginController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
+	public function store()	{
 		//
 	}
 
@@ -38,8 +37,7 @@ class LoginController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id)	{
 		//
 	}
 
@@ -49,8 +47,7 @@ class LoginController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
+	public function edit($id)	{
 		//
 	}
 
@@ -60,8 +57,7 @@ class LoginController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
+	public function update($id)	{
 		//
 	}
 
@@ -71,8 +67,7 @@ class LoginController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
+	public function destroy($id) {
 		//
 	}
 

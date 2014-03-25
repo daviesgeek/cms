@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
 Route::resource('login', 'LoginController');
+Route::get('{page}', function($page) {
+  $menu = \Cms\Menu::doesExist($page);
+  echo '<pre>';
+  print_r($menu::$menu);
+  echo '</pre>';
+});

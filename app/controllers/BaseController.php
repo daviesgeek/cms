@@ -15,4 +15,8 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function getPage($page) {
+		return 'This is '.$page;
+	}
+
 }
