@@ -27,3 +27,5 @@ error_log
 *.sublime-*
 
 /app/config/local
+/app/config/start.php
+
