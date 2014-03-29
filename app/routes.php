@@ -11,10 +11,13 @@
 |
 */
 
-Route::resource('login', 'LoginController');
-Route::get('{page}', function($page) {
-  $menu = \Cms\Menu::doesExist($page);
-  echo '<pre>';
-  print_r($menu::$menu);
-  echo '</pre>';
+Route::get('/', 'HomeController@index');
+
+Route::get('{slug?}', array(
+  'as'    => 'CMS',
+  'uses'  => 'CMSController@getPage'
+))->where('slug', '.+');
+
+App::missing(function($exception) {
+  return Response::view('errors.missing', array(), 404);
 });

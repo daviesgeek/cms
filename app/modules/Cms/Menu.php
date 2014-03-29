@@ -7,11 +7,19 @@
 
 class Menu extends \Eloquent{
 
-  static $menu = array();
+  static $menu;
 
-  public static function doesExist($page) {
-    self::$menu = \DB::table('users')->get();
-    return new static;
+  public function __construct() {
+    
+  }
+
+  public static function getAll() {
+    self::$menu = \DB::table('menu')->where('status', '1')->get();
+    return new self;
+  }
+
+  public function getEdits() {
+    echo 'get edits';
   }
 
 }
