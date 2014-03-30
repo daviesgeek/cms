@@ -13,13 +13,23 @@ class Menu extends \Eloquent{
     
   }
 
+  /**
+   * Gets all the menu items then returns a new instance of this class
+   * @return Class instance of the \CMS\Menu class
+   */
   public static function getAll() {
     self::$menu = \DB::table('menu')->where('status', '1')->get();
     return new self;
   }
 
-  public function getEdits() {
-    echo 'get edits';
+  /**
+   * Checks to see if the page exists or not
+   * @param  string $url
+   * @return boolean
+   */
+  public static function doesPageExist($url) {
+    $page = \DB::table('menu')->where('url', $url);
+    print_r($page);
   }
 
 }
