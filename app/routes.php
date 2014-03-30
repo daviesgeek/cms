@@ -12,6 +12,18 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::resource('login', 'LoginController', array('before' => 'guest', 'as' => 'login'));
+Route::get('logout', 'LogoutController@index')->before('auth');
+
+Route::group(array(
+  'prefix' => 'admin',
+  'before' => 'auth',
+  'namespace' => 'Admin'),
+  function() {
+  
+    Route::get('', array('as' => 'admin.home', 'uses' => 'HomeController@index'));
+
+});
 
 Route::get('{slug?}', array(
   'as'    => 'CMS',

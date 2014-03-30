@@ -1,20 +1,14 @@
 <?php
 /**
- * Login resource (handles all the authentication)
+ * Logout resource (handles logging out)
  * @author Matthew Davies <daviesgeek@icloud.com>
- * @created March 24th, 2014
+ * @created March 30th, 2014
  */
-class LoginController extends \BaseController {
+class LogoutController extends \BaseController {
 
 
-	public $title = 'Login';
-
-	/**
-	 * User facing login page
-	 * @return Response
-	 */
 	public function index() {
-		return View::make('login')->with('title', $this->title);
+		\Auth::logout();
 	}
 
 	/**
@@ -32,12 +26,7 @@ class LoginController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()	{
-		$user = array(
-			'username' => Input::get('username'),
-			'password' => Input::get('password')
-		);
-		$remember = Input::get('remember');
-		Auth::attempt($user, $remember);
+		//
 	}
 
 	/**
