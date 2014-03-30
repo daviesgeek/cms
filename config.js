@@ -14,13 +14,13 @@ exports.config = {
     javascripts: {
       joinTo: {
         '_/js/app.js': /^app\/admin\//,
-        'js/public.js': /^app\/assets\/js\//,
+        'js/public.js': /(^app\/assets\/js\/|bower_components\/jquery\/|bower_components\/bootstrap\/)/,
         '_/js/vendor.js': /^(bower_components|vendor)/
       }
     },
     stylesheets: {
       joinTo: {
-        'css/public.css': /^app\/assets\/css\//,
+        'css/public.css': /(^app\/assets\/css\/|bower_components\/bootstrap\/)/,
         '_/css/app.css': /^(app|vendor|bower_components)/
       },
       order: {
