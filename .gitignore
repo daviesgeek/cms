@@ -26,6 +26,8 @@ error_log
 /bower_components
 *.sublime-*
 
-/app/config/local
-/app/config/start.php
-
+app/config/local
+app/config/start.php
+public/_/*
+public/js/*
+public/css/*
