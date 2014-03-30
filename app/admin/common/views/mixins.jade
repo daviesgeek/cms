@@ -1,0 +1,17 @@
+mixin progress(title,goal,progress,percent)
+  .progress-meter
+    .label= title
+      a.suggestion How to reach your goal.
+    .bar
+      span=goal
+      .progress-amount(style="min-width:#{percent}")
+        span=progress
+
+mixin stat-row(number,note,desc)
+  .section.table
+    .row.columns.stat-row
+      .col.width-20.stat-amount
+        strong=number
+        em=note
+      .col.width-80.valign
+        p=desc

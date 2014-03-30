@@ -1,0 +1,12 @@
+.overlay
+  .cover
+  .scroll
+    .container(ng-hide="networkActive")
+      a.close(ng-click="$parent.closeDialog()")
+      div(ng-transclude)
+    .container(ng-show="networkActive")
+      h1.message
+        i
+        span {{networkActive.title}}
+      hr
+      div.note {{networkActive.note || 'Communicating with server.'}}

@@ -1,0 +1,19 @@
+span(ng-if="verbosity == '1' || !verbosity ")
+	span.page-selector
+		span.prev(ng-click="prevPage()", ng-show="pages.page > 1") &lt;prev
+		span.page Page {{ pages.page }} of {{ pages.totalPages }}
+		span.next(ng-click="nextPage()", ng-show="pages.page < pages.totalPages") next&gt;
+span(ng-if="verbosity == 2")
+	span.info Records: {{ pages.total }}
+	span.page-selector
+		span.prev(ng-click="prevPage()", ng-show="pages.page > 1") &lt;prev
+		span.page Page {{ pages.page }} of {{ pages.totalPages }}
+		span.next(ng-click="nextPage()", ng-show="pages.page < pages.totalPages") next&gt;
+span(ng-if="verbosity == 3 ")
+		span.info Pages: {{pages.totalPages}} Records: {{pages.total}}
+		span.records Records 
+				span {{ pages.range[0]}} - {{ pages.range[1] }}
+		span.page-selector
+			span.prev(ng-click="prevPage()", ng-show="pages.page > 1") &lt;prev
+			span.page Page {{pages.page}}
+			span.next(ng-click="nextPage()", ng-show="pages.page < pages.totalPages") next&gt;

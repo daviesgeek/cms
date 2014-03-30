@@ -1,0 +1,58 @@
+doctype html
+html(lang='en-US',ng-app="app")
+  head
+    meta(http-equiv='content-type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=yes')
+    title(ng-bind="title+' :: Epiphany Analytics'") Epiphany Analytics
+    link(rel='shortcut icon', type='image/x-icon', href='/favicon.ico')
+    script(src='/assets/_/js/vendor.js')
+    script(src='/assets/_/js/views.js')
+    script(src='/assets/_/js/app.js')
+    link(rel='stylesheet', href='/assets/_/css/app.css')
+    script(type='text/javascript', src='//use.typekit.net/ogi3qvg.js')
+    script(type='text/javascript').
+      try{Typekit.load();}catch(e){}
+      require('app')
+  body
+
+    input(type="hidden", ng-model="sessionData", ng-init="sessionData=null")
+
+    header(ng-controller="top-nav")
+      nav#top-nav.navbar.navbar-default
+        a#navbar-logo.navbar-brand(ui-sref='init.home') Brand
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li#page-header
+              h1(ng-bind="h1", ng-class="{{h1Class}}")
+          ul.nav.navbar-nav.navbar-right
+            li#company.select-holder.blue
+              select#company-select(name='entityID', ng-model="session.entityID", ng-options="key as name for (key, name) in session.entityList")
+                option(value='') Select...
+            li#user-menu.dropdown(ng-cloak, ng-show="session.fname != null")
+              a.dropdown-toggle(ng-bind="session.fname")
+              ul.dropdown-menu
+                li
+                  a(href='#') Action
+                li
+                  a(href='#') Another action
+                li
+                  a(href='#') Something else here
+                li.divider
+                li
+                  a(ui-sref="admin") Admin
+    #page.row
+      nav#side-nav-left.col-xs-2
+        ul.nav.nav-pills.nav-stacked.nav-collapse
+          li.dash(ng-class="activePage == 'dashboard' ? 'active' : ''")
+            a(ui-sref="dashboard")
+              span Dash
+          li.lists(ng-class="activePage == 'lists' ? 'active' : ''")
+            a(ui-sref='lists')
+              span Lists
+          li.data(ng-class="activePage == 'data' ? 'active' : ''")
+            a(ui-sref='data')
+              span Data
+          li.tools(ng-class="activePage == 'tools' ? 'active' : '' ")
+            a(ui-sref='tools')
+              span Tools
+      #page-wrap(ui-view)

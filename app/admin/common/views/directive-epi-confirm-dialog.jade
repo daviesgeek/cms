@@ -1,0 +1,12 @@
+span(ng-transclude)
+script(type="text/ng-template" , id="/epi-confirm-dialog.html")
+  form(name="confirmForm", ng-submit="submit(confirmForm.$valid)", novalidate)
+    div.modal-header
+      h3 {{header}}
+    div.modal-body
+      p(ng-if="bodySafe", ng-bind-html='bodySafe')
+      p Please type '{{idiotTest}}' to {{action|lowercase}}
+      input(type='text', name="idiotTestInput" ng-model="idiotTestCheck", ui-validate="{valid: 'validate($value)' }")
+    div.modal-footer
+      input.btn(type="submit", value="{{action|capitalize}}", ng-class="confirmForm.$invalid == false ? '' : 'disabled' ", ng-disabled="confirmForm.$invalid")
+      span.btn(ng-click='cancel()') Cancel

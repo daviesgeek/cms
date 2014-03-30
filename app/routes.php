@@ -17,11 +17,13 @@ Route::get('logout', 'LogoutController@index')->before('auth');
 
 Route::group(array(
   'prefix' => 'admin',
-  'before' => 'auth',
+  // 'before' => 'auth',
   'namespace' => 'Admin'),
   function() {
   
-    Route::get('', array('as' => 'admin.home', 'uses' => 'HomeController@index'));
+    Route::get('', array('as' => 'admin.home', function() {
+      return View::make('admin');
+    }));
 
 });
 

@@ -3,7 +3,7 @@
 @section('content')
   <h1>Login here!</h1>
   <div class="content col-md-7 col-md-offset-2">
-    <form class="form-horizontal" role="form" action="/login">
+    <form class="form-horizontal" role="form" action="/login" id="login">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-10">
