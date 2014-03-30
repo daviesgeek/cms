@@ -15,7 +15,7 @@ class CreateEditTable extends Migration {
 		Schema::create('edit', function($table) {
 			$table->increments('id');
 			$table->integer('pageID');
-			$table->integer('editID');
+			$table->integer('editSectionID');
 			$table->longText('edit');
 		});
 	}
