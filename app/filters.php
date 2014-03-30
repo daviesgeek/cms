@@ -58,7 +58,7 @@ Route::filter('auth.basic', function()
 Route::filter('guest', function()
 {
 	if (Auth::check())
-    return Redirect::to('/')
+    return Redirect::to('admin.home')
       ->with('flash_notice', 'You are already logged in!');
 });
 
