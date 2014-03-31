@@ -1,7 +1,7 @@
 <html>
   <head>
-    {{ HTML::style('css/public.css') }}
-    {{ HTML::script('js/public.js') }}
+    {{ HTML::style('assets/public.css') }}
+    {{ HTML::script('assets/vendor.js') }}
     <title>{{$title}}</title>
   </head>
   <header>
@@ -10,4 +10,6 @@
   <body class="container">
     @yield('content')
   </body>
+  {{ HTML::script('assets/public.js') }}
+  <script type="text/javascript">require('assets/js/public')</script>
 </html>
