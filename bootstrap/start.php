@@ -24,13 +24,9 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-	'local' => array('Adrastos'),
-  'staging' => array('staging.missbshops4you.com'),
-  'production' => array('missbshops4you.com')
-
-));
+$env = $app->detectEnvironment(function() {  
+  return require __DIR__.'/../environment.php';
+});
 
 /*
 |--------------------------------------------------------------------------

@@ -29,3 +29,4 @@ error_log
 app/config/local
 app/config/start.php
 public/assets/*
+environment.php

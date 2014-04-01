@@ -52,16 +52,16 @@ return array(
 			'prefix'   => '',
 		),
 
-		'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'database',
-			'username'  => 'root',
-			'password'  => '',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),
+    'mysql' => array(
+      'driver'    => 'mysql',
+      'host'      => $_ENV['DB_HOST'],
+      'database'  => $_ENV['DB_DATABASE'],
+      'username'  => $_ENV['DB_USER'],
+      'password'  => $_ENV['DB_PASS'],
+      'charset'   => 'utf8',
+      'collation' => 'utf8_unicode_ci',
+      'prefix'    => '',
+    ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
