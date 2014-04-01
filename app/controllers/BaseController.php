@@ -3,7 +3,7 @@
 class BaseController extends Controller {
 
 	public function __construct() {
-		
+
 	}
 
 	/**
@@ -23,20 +23,15 @@ class BaseController extends Controller {
 	 * @return void
 	 */
 	public function getPage($page) {
-	  $CMS = \Cms\Menu::getAll();
-	  $menuList = $CMS::$menu;
+		$thisPage = $this->data = \Cms\Page::doesExist($page);
 
-	  foreach ($menuList as $menu) {
-	    if($menu->url == $page){
-	      $thisPage = $menu;
-	      break;
-	    }
-	  }
-	  if(empty($thisPage)){
-	    App::abort(404);
-	    return;
-	  }
-	  $this->edits = \Cms\Edit::get($thisPage);
+		if(!$thisPage){
+			App::abort(404);
+			return;
+		}
+
+		$this->data->edits = $thisPage::$edits;
+		$this->data->page = $thisPage::$page;
 	}
 
 }

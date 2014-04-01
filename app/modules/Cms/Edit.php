@@ -10,27 +10,32 @@ class Edit extends \Eloquent {
   static $pageEdits;
 
   /**
-   * Gets a edits by a page url
-   * @param  [array] $page
-   * @return [object] edits object
+   * Gets a pages edits by url
+   * @param  array $page
+   * @param  boolean $returnClass whether to return a class or not
+   * @return void|object either object or an instance of a class
    */
-  public static function get($page) {
+  public static function get($page, $returnClass=true) {
     
     // Get the edit sections and the edits
     $editSections = \DB::table('edit_section')->get();
     $edits = \DB::table('edit')->where('pageID', $page->id)->get();
 
-    // Then loop over them and create the array of 
+    // Then loop over them and create the array of edits
     foreach ($editSections as $section) {
       foreach ($edits as $edit) {
         if($section->id == $edit->editSectionID){
           self::$pageEdits[$section->name] = $edit;
           break;
-        }        
+        }
       }
     }
 
-    return new self;
+    if($returnClass){
+      return self::$pageEdits;
+    }else{
+      return new self;
+    }
   }
 
 

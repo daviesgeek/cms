@@ -29,7 +29,7 @@ Route::group(array(
 
 Route::get('{slug?}', array(
   'as'    => 'CMS',
-  'uses'  => 'CMSController@getPage'
+  'uses'  => 'CMSController@index'
 ))->where('slug', '.+');
 
 App::missing(function($exception) {
