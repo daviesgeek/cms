@@ -19,6 +19,7 @@ class CreateMenuTable extends Migration {
 			$table->string('url');
 			$table->string('controller');
 			$table->string('h1');
+			$table->integer('template');
 			$table->tinyInteger('status')->default('0');
 			$table->tinyInteger('locked')->default('0');
 		});

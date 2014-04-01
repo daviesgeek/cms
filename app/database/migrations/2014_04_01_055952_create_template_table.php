@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEditTable extends Migration {
+class CreateTemplateTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,9 @@ class CreateEditTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('edit', function($table) {
+		Schema::create('template', function($table) {
 			$table->increments('id');
-			$table->integer('pageID');
-			$table->integer('editSectionID');
-			$table->longText('text');
+			$table->string('name');
 		});
 	}
 
@@ -27,7 +25,7 @@ class CreateEditTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('edit');
+		Schema::drop('template');
 	}
 
 }
