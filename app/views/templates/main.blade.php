@@ -1,5 +1,5 @@
 @extends('layout')
 
 @section('content')
-{{$edits['home']->text}}
+{{$edits['main']->text}}
 @stop
