@@ -42,4 +42,13 @@ class Page extends \Eloquent{
     }
   }
 
+  /**
+   * Query scope for checking to see if a page is able to be displayed 
+   */
+  
+  public function isActive($query) {
+    return $query->where('active', 1);
+  }
+
+
 }
