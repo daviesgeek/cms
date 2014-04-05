@@ -3,10 +3,13 @@
  */
 
 $('#login').submit(function(e) {
-  alert('you submitted');
+  var data = $(this).serialize();
+  $.post('/login', data, function(response) {
+    window.location.href = window.makeURL(response.status.redirect);
+  }, "json").error(function(response) {
+    if('message' in response.responseJSON.status){
+      $('.text-danger').text(response.responseJSON.status.message);
+    }
+  });
   e.preventDefault();
-});
-
-$('#test').click(function() {
-  alert('you clicked me!');
 });
