@@ -6,6 +6,8 @@
  * @author   Taylor Otwell <taylorotwell@gmail.com>
  */
 
+$startTime = microtime(true);
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
