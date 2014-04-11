@@ -26,10 +26,6 @@ Route::group(array(
       'as' => 'admin.home',
       'uses' => 'Admin@index'
     ));
-    Route::get('users', array(
-      'as' => 'admin.users',
-      'uses' => 'User'
-    ));
 
 });
 
