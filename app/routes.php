@@ -22,7 +22,14 @@ Route::group(array(
   'namespace' => 'Admin'),
   function() {
   
-    Route::get('', array('as' => 'admin.home', 'uses' => 'AdminController@index'));
+    Route::get('', array(
+      'as' => 'admin.home',
+      'uses' => 'AdminController@index'
+    ));
+    Route::get('users', array(
+      'as' => 'admin.users',
+      'uses' => 'User'
+    ));
 
 });
 
