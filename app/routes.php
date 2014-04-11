@@ -12,20 +12,33 @@
 */
 
 Route::get('/', 'Home@index');
-Route::resource('login', 'Login', array('before' => 'guest', 'as' => 'login'));
+
+Route::resource('login', 'Login', array(
+  'before' => 'guest',
+  'as'     => 'login'
+));
+
 Route::get('logout', 'Logout@index')->before('loggedIn');
 Route::post('create-user', 'Login@createUser');
 
 Route::group(array(
-  'prefix' => 'admin',
-  'before' => 'loggedIn',
+  'prefix'    => 'admin',
+  'before'    => 'loggedIn',
   'namespace' => 'Admin'),
   function() {
   
     Route::get('', array(
-      'as' => 'admin.home',
+      'as'   => 'admin.home',
       'uses' => 'Admin@index'
     ));
+
+});
+
+Route::group(array(
+  'prefix'    => 'api',
+  'before'    => 'loggedIn',
+  'namespace' => 'Api'),
+  function() {
 
 });
 
