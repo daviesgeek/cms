@@ -26,7 +26,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://missbshops4you.com',
+	// Set this in individual config files
+	// 'url' => '',
 
 	/*
 	|--------------------------------------------------------------------------
