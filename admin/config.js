@@ -1,6 +1,6 @@
 exports.config = {
   conventions: {
-    assets: /^admin\/assets\/(?!css|js)/,
+    assets: /^app\/assets\/(?!css|js)/,
     ignored: /^(node_modules|(.*?\/)?[_]\w+)/
   },
   modules: {
@@ -8,20 +8,20 @@ exports.config = {
     wrapper: 'commonjs'
   },
   paths: {
-    "public": 'public/assets'
+    "public": '../public/assets'
   },
   files: {
     javascripts: {
       joinTo: {
-        '_/js/app.js': /^admin\//,
-        'public.js': /^admin\/assets\/js\//,
+        '_/js/app.js': /^app\//,
+        'public.js': /^app\/assets\/js\//,
         'vendor.js': /^bower_components\/(jquery|bootstrap)/,
         '_/js/vendor.js': /^bower_components/
       }
     },
     stylesheets: {
       joinTo: {
-        'public.css': /(^admin\/assets\/css\/|bower_components\/bootstrap\/)/,
+        'public.css': /(^app\/assets\/css\/|bower_components\/bootstrap\/)/,
         '_/css/app.css': /^(app|bower_components)/
       },
       order: {
@@ -30,7 +30,7 @@ exports.config = {
     },
     templates: {
       joinTo: {
-        '_/js/views.js': /^admin\//
+        '_/js/views.js': /^app\//
       }
     }
   },
