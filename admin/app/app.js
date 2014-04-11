@@ -18,17 +18,12 @@ require('routes/index')
 angular.module("app", [
   "configuration",
   "ui.router",
-  "ui.bootstrap",
-  "ui.utils",
   "restangular",
-  // "ngNumeraljs"
-  // "angularFileUpload"
-  "ep:common",
+  "app:common",
   "ngAnimate",
  
   // routes
   "routes"
-  // "testroutes"
 ]).
 config(function($urlRouterProvider, $logProvider, RestangularProvider, API_ROOT){
   // setup Restangular

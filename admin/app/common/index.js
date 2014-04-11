@@ -4,21 +4,12 @@
  */
 
 angular
-  .module('ep:common',['ui.sortable'])
-  // .directive('dialog', require('./directives/dialog'))
-  .directive('epiCheckbox', require('./directives/epi-checkbox'))
-  .directive('epiCheckboxSwitch', require('./directives/epi-checkbox-switch'))
-  .directive('epiPaging', require('./directives/epi-paging'))
-  .directive('epiConfirmDialog', require('./directives/epi-confirm-dialog'))
+  .module('app:common', [])
   .animation('.slide-up', require('./animations/slide-toggle'))
   .animation('.slide-left-closed', require('./animations/slide-left'))
   .animation('.slide-right-closed', require('./animations/slide-right'))
   .animation('.scroll-top', require('./animations/scroll-top'))
   .filter('capitalize', require('./filters/capitalize'))
-  .factory('User', require('./resources/user'))
-  .factory('Entity', require('./resources/entity'))
-  .factory('Group', require('./resources/group'))
-  .factory('Session', require('./services/session'))
   .config(function($httpProvider){
     var interceptor = ['$rootScope', '$location', '$q', '$injector', function($rootScope, $location, $q, $injector) {
       return{
@@ -39,6 +30,7 @@ angular
     }];
 
     $httpProvider.interceptors.push(interceptor);
+    // $locationProvider.hashPrefix('/!');
 
     // $httpProvider.interceptors.push(function(interceptor) {
     //   console.log(interceptor)
