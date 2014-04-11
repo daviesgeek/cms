@@ -1,18 +1,17 @@
+'use strict'
+
 /**
- * Main index.js module (routing)
+ * Main routing module
  */
 
+require('routes/users/index');
+
 angular
-	.module('routes', [])
+	.module('routes', ['routes:users'])
 	.config(function($stateProvider) {
 		$stateProvider
 		.state('init', {
 			url: '/',
 			template: require('./views/init')
-			// controller: 'top-nav',
-		})
-		.state('home', {
-			url: '/home',
-			template: require('./views/home')
 		})
 	})
