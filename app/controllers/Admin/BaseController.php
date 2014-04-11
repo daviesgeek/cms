@@ -8,10 +8,13 @@
 class BaseController extends \BaseController {
 
   public function __construct() {
+
+    // Get the current route name (corresponds with the Sentry permission name)
     $route = \Route::currentRouteName();
-    $user = \Sentry::getUser();
-    if(!$user->hasAccess($route)){
-      \App::abort(403, 'You don\'t have access to view this page');
+
+    // If the current user does not have access to this route, throw a 403
+    if(!\Sentry::getUser()->hasAccess($route)){
+      \App::abort(403, \Lang::get('errors.403'));
     }
   }
 
