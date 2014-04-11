@@ -5,7 +5,7 @@
  * @created April 10th, 2014
  */
 
-class AdminController extends BaseController {
+class Admin extends BaseController {
   public function index() {
     return \View::make('admin');    
   }

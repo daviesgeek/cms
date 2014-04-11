@@ -4,7 +4,7 @@
  * @author Matthew Davies <daviesgeek@icloud.com>
  * @created March 30th, 2014
  */
-class LogoutController extends \BaseController {
+class Logout extends \BaseController {
 
 
 	public function index() {

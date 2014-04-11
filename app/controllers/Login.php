@@ -5,7 +5,7 @@
  * @created March 24th, 2014
  */
 
-class LoginController extends \BaseController {
+class Login extends \BaseController {
 
 
 	public $title = 'Login';
