@@ -4,9 +4,9 @@ The Laravel application is contained in `app/`. The Angular backend is contained
 
 ---------------
 
-To install:
+##To install:
 
-###Laravel
+####Laravel
 
 1. Create a new file called `enviroment.php`. This will tell Laravel which configuration to use by returning the name of the environment:
 
@@ -27,7 +27,7 @@ To install:
   ```
 3. Then run `composer install`. For more information about composer and instructions on how to install, go to [the Composer download page](https://getcomposer.org/download/).
 
-###Angular
+####Angular
 
 All these commands should be run from within `admin`, so make sure you `cd admin` before running them. This also depends on having `node` and `npm` both installed.
 
@@ -42,3 +42,10 @@ module.exports = {
   'API_ROOT': '<url goes here>'
 }
 ```
+
+---------------------
+
+##To run
+
+Run `brunch watch` in `admin`.
+Run `php -S localhost:8000 server.php` in the root of the project.
