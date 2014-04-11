@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::resource('login', 'LoginController', array('before' => 'guest', 'as' => 'login'));
-Route::get('logout', 'LogoutController@index')->before('loggedIn');
-Route::post('create-user', 'LoginController@createUser');
+Route::get('/', 'Home@index');
+Route::resource('login', 'Login', array('before' => 'guest', 'as' => 'login'));
+Route::get('logout', 'Logout@index')->before('loggedIn');
+Route::post('create-user', 'Login@createUser');
 
 Route::group(array(
   'prefix' => 'admin',
@@ -24,7 +24,7 @@ Route::group(array(
   
     Route::get('', array(
       'as' => 'admin.home',
-      'uses' => 'AdminController@index'
+      'uses' => 'Admin@index'
     ));
     Route::get('users', array(
       'as' => 'admin.users',
@@ -35,7 +35,7 @@ Route::group(array(
 
 Route::get('{slug?}', array(
   'as'    => 'CMS',
-  'uses'  => 'CMSController@index'
+  'uses'  => 'CMS@index'
 ))->where('slug', '.+');
 
 App::missing(function($exception) {
