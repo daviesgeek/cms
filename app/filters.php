@@ -80,3 +80,59 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/**
+* Sentry filters
+* http://laravelsnippets.com/snippets/sentry-route-filters
+* 
+* Checks if the user is logged in
+*/
+Route::filter('loggedIn', function()
+{
+ if(Sentry::check() != 1) {
+ 	return Redirect::to('login');
+ }
+});
+ 
+/**
+* hasAccess filter (permissions)
+*
+* Check if the user has permission (group/user)
+*/
+Route::filter('hasAccess', function($route, $request, $value) {
+	$user = Sentry::getUser();
+
+	if( ! $user->hasAccess($value)){
+	 return Redirect::to('login')->withErrors(array('message' => 'You do not have access to view this page'));
+	}
+ 
+});
+ 
+/**
+* InGroup filter
+*
+* Check if the user belongs to a group
+*/
+Route::filter('inGroup', function($route, $request, $value)
+{
+ try
+ {
+$user = Sentry::getUser();
+ 
+$group = Sentry::findGroupByName($value);
+ 
+ if( ! $user->inGroup($group))
+ {
+ return Redirect::route('cms.login')->withErrors(array(Lang::get('user.noaccess')));
+ }
+ }
+ catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+ {
+ return Redirect::route('cms.login')->withErrors(array(Lang::get('user.notfound')));
+ }
+ 
+ catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+ {
+ return Redirect::route('cms.login')->withErrors(array(Lang::get('group.notfound')));
+ }
+});
