@@ -95,7 +95,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Cms\Group',
+		'model' => '\Cms\Group',
 
 	),
 
@@ -120,7 +120,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Cms\User',
+		'model' => '\Cms\User',
 
 		/*
 		|--------------------------------------------------------------------------
@@ -149,7 +149,7 @@ return array(
 	|
 	*/
 
-	'user_groups_pivot_table' => 'users_groups',
+	'user_groups_pivot_table' => 'user_group',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -186,7 +186,7 @@ return array(
 		|
 		*/
 
-		'model' => 'Cms\Throttle',
+		'model' => '\Cms\Throttle',
 
 		/*
 		|--------------------------------------------------------------------------
