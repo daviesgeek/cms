@@ -30,3 +30,4 @@ public/assets/*
 environment.php
 admin/node_modules
 admin/bower_components
+admin/app/configuration/index.js
