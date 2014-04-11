@@ -44,13 +44,13 @@ class BaseController extends Controller {
 		if(!empty($this->response)) {
 
 			$wrapper = array(
-				'status' => array(
-					'code' => $this->response['code'],
+				'status'    => array(
+					'code'    => $this->response['code'],
 					'message' => $this->response['message']
 				),
-				'info' => null,
-				'data' => $this->response['data'],
-				'meta' => null
+				'info'      => null,
+				'data'      => $this->response['data'],
+				'meta'      => null
 			);
 
 

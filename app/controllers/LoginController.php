@@ -42,6 +42,8 @@ class LoginController extends \BaseController {
 			Sentry::authenticate($user, $remember);
 			$this->response['message'] = 'Login successful';
 			$this->response['redirect'] = 'admin';
+			$this->response['code'] = 200;
+			$this->response['data'] = array('redirect' => 'admin');
 		}catch(Exception $e){
 
 			$this->response['exception'] = $e;
@@ -121,6 +123,18 @@ class LoginController extends \BaseController {
 	 */
 	public function destroy($id) {
 		//
+	}
+
+	public function createUser() {
+		if(Input::get('password') == Input::get('passwordrepeat')) {
+			$user = Sentry::createUser(array(
+		      'email'     => Input::get('email'),
+		      'password'  => Input::get('password'),
+		      'activated' => true,
+		  ));
+		}else{
+			echo 'Passwords do not match';
+		}
 	}
 
 }

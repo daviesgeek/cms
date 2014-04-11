@@ -8,7 +8,7 @@ class LogoutController extends \BaseController {
 
 
 	public function index() {
-		\Auth::logout();
+		Sentry::logout();
 	}
 
 	/**
