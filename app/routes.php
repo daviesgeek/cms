@@ -13,17 +13,16 @@
 
 Route::get('/', 'HomeController@index');
 Route::resource('login', 'LoginController', array('before' => 'guest', 'as' => 'login'));
-Route::get('logout', 'LogoutController@index')->before('auth');
+Route::get('logout', 'LogoutController@index')->before('loggedIn');
+Route::post('create-user', 'LoginController@createUser');
 
 Route::group(array(
   'prefix' => 'admin',
-  // 'before' => 'auth',
+  'before' => 'loggedIn',
   'namespace' => 'Admin'),
   function() {
   
-    Route::get('', array('as' => 'admin.home', function() {
-      return View::make('admin');
-    }));
+    Route::get('', array('as' => 'admin.home', 'uses' => 'AdminController@index'));
 
 });
 
