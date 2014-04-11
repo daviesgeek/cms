@@ -47,5 +47,4 @@ module.exports = {
 
 ##To run
 
-Run `brunch watch` in `admin`.
-Run `php -S localhost:8000 server.php` in the root of the project.
+Run `brunch watch` and `php -S localhost:8000 server.php` in the root of the project.

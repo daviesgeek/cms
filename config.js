@@ -1,14 +1,14 @@
 exports.config = {
   conventions: {
     assets: /^app\/assets\/(?!css|js)/,
-    ignored: /^(node_modules|(.*?\/)?[_]\w+)/
+    ignored: /^(node_modules|vendor|(.*?\/)?[_]\w+)/
   },
   modules: {
     definition: 'commonjs',
     wrapper: 'commonjs'
   },
   paths: {
-    "public": '../public/assets'
+    "public": 'public/assets'
   },
   files: {
     javascripts: {

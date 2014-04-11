@@ -28,6 +28,6 @@ app/config/local
 app/config/start.php
 public/assets/*
 environment.php
-admin/node_modules
-admin/bower_components
+node_modules
+bower_components
 admin/app/configuration/index.js
