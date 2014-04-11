@@ -13,7 +13,6 @@ for(name in constants) {
 
 require('common/index')
 require('routes/index')
-// require('testroutes')
 
 angular.module("app", [
   "configuration",
