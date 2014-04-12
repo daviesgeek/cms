@@ -57,9 +57,9 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check())
-    return Redirect::to('admin.home')
-      ->with('flash_notice', 'You are already logged in!');
+	if (\Sentry::getUser()){
+    return Redirect::route('admin.home');
+	}
 });
 
 /*

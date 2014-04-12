@@ -13,10 +13,11 @@
 
 Route::get('/', 'Home@index');
 
-Route::resource('login', 'Login', array(
-  'before' => 'guest',
-  'as'     => 'login'
-));
+Route::group(array('before' => 'guest'), function() {
+  Route::resource('login', 'Login', array(
+    'as' => 'login'
+  ));
+});
 
 Route::get('logout', 'Logout@index')->before('loggedIn');
 Route::post('create-user', 'Login@createUser');
