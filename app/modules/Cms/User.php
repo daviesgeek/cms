@@ -21,6 +21,16 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
   protected $hidden = array('password');
 
   /**
+   * Gets all the users
+   * @param  array $columns an array of columns to return
+   * @return object of users
+   */
+  public function getAllUsers($columns=array('*')) {
+    $users = \DB::table($this->table)->get() ;
+    return $users;
+  }
+
+  /**
    * Get the unique identifier for the user.
    *
    * @return mixed
@@ -48,11 +58,6 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
   public function getReminderEmail()
   {
     return $this->email;
-  }
-
-  public function getAllUsers($columns=array('*')) {
-    $users = \DB::table($this->table)->get() ;
-    return $users;
   }
 
 }
