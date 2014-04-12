@@ -7,7 +7,7 @@
 exports.config = {
   conventions: {
     assets: /^app\/assets\/(?!css|js)/,
-    ignored: /^(node_modules|app\/admin\/styles\/bootstrapsrc|(.*?\/)?[_]\w+)/
+    ignored: /^(node_modules|vendor|app\/admin\/styles\/bootstrapsrc|(.*?\/)?[_]\w+)/
   },
   modules: {
     definition: 'commonjs',
@@ -19,14 +19,14 @@ exports.config = {
   files: {
     javascripts: {
       joinTo: {
-        'public.js': /^app\/assets\/js/,
-        '_admin/js/app.js': /^app\/admin/,
-        '_admin/js/vendor.js': /^bower_components/
+        'public.js': /^(app\/assets\/js|bower_components\/(bootstrap|jquery))/,
+        '_admin/js/vendor.js': /^bower_components/,
+        '_admin/js/app.js': /^app\/admin/
       }
     },
     stylesheets: {
       joinTo: {
-        'public.css': /^app\/assets\/css/,
+        'public.css': /^(app\/assets\/css|bower_components\/(bootstrap|jquery))/,
         '_admin/css/app.css': /^(app\/admin|bower_components)/
       },
       order: {

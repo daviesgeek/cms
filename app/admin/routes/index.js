@@ -4,7 +4,7 @@
  * Main routing module
  */
 
-require('routes/users/index');
+require('admin/routes/users/index');
 
 angular
 	.module('routes', ['routes:users'])

@@ -5,16 +5,16 @@
 // }
 
 // setup configuration
-var constants = require('configuration/index');
+var constants = require('admin/configuration/index');
 var config = angular.module('configuration', []);
 for(name in constants) {
   config.constant(name, constants[name]);
 }
 
-require('common/index')
-require('routes/index')
+require('admin/common/index');
+require('admin/routes/index');
 
-angular.module("app", [
+angular.module("admin/app", [
   "configuration",
   "ui.router",
   "restangular",
