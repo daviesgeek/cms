@@ -10,6 +10,7 @@ angular
   .animation('.slide-right-closed', require('./animations/slide-right'))
   .animation('.scroll-top', require('./animations/scroll-top'))
   .filter('capitalize', require('./filters/capitalize'))
+  .factory('User', require('./resources/user'))
   .config(function($httpProvider){
     var interceptor = ['$rootScope', '$location', '$q', '$injector', function($rootScope, $location, $q, $injector) {
       return{

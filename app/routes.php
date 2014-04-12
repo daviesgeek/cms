@@ -40,6 +40,8 @@ Route::group(array(
   'namespace' => 'Api'),
   function() {
 
+    Route::resource('users', 'Users');
+
 });
 
 Route::get('{slug?}', array(

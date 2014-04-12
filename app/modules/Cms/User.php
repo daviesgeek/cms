@@ -49,5 +49,11 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
   {
     return $this->email;
   }
+
+  public function getAllUsers($columns=array('*')) {
+    $users = \DB::table($this->table)->get() ;
+    return $users;
+  }
+
 }
 
