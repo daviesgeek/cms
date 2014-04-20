@@ -20,7 +20,6 @@ Route::group(array('before' => 'guest'), function() {
 });
 
 Route::get('logout', 'Logout@index')->before('loggedIn');
-Route::post('create-user', 'Login@createUser');
 
 Route::group(array(
   'prefix'    => 'admin',
