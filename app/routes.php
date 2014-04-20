@@ -41,6 +41,7 @@ Route::group(array(
   function() {
 
     Route::resource('users', 'Users');
+    Route::resource('session', 'Session');
 
 });
 
