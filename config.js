@@ -27,7 +27,8 @@ exports.config = {
     stylesheets: {
       joinTo: {
         'public.css': /^(app\/assets\/css|bower_components\/(bootstrap|jquery))/,
-        '_admin/css/app.css': /^(app\/admin|bower_components)/
+        '_admin/css/vendor.css': /^bower_components/,
+        '_admin/css/app.css': /^app\/admin/
       },
       order: {
         before: ['app/styles/main.less']
