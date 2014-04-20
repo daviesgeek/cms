@@ -30,6 +30,16 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User implements UserInterfac
     return $users;
   }
 
+  public function findUserByEmail($email){
+
+    if ( ! $user = $this->newQuery()->where('email', $email)->get()->first()->toArray())
+    {
+      throw new \Cartalyst\Sentry\Users\UserNotFoundException("A user could not be found with ID [$email].");
+    }
+
+    return $user;
+  }
+
   /**
    * Get the unique identifier for the user.
    *

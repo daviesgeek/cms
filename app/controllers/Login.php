@@ -33,16 +33,45 @@ class Login extends \BaseController {
 	 * @return Response
 	 */
 	public function store()	{
-		$user = array(
-			'email' => Input::get('email'),
+
+		// Make an array of the credentials
+		$credentials = array(
+			'username' => Input::get('username'),
 			'password' => Input::get('password')
 		);
+
+		// Apply validation rules to the username field to see if the user inputted an email address
+		$validator = Validator::make(
+			array('username' => $credentials['username']),
+			array('username' => 'email')
+		);
+
+		// If it passes, the user inputted an email address
+		if($validator->passes()){
+
+			// Instantiate the user model
+			$user = new \User;
+
+			// Find the user by the email address and assign the username to a new variable
+			$username = $user->findUserByEmail($credentials['username'])['username'];
+
+			// Set the username on the $credentials array (it's now an email address)
+			$credentials['username'] = $username;
+		}
+
+		// To set whether the user should be remembered or not
 		$remember = Input::get('remember');
 		try{
-			Sentry::authenticate($user, $remember);
+
+			// Attempt to login
+			Sentry::authenticate($credentials, $remember);
+
+			// If login is successful, return a JSON array
 			$this->response['message'] = 'Login successful';
 			$this->response['redirect'] = 'admin';
 			$this->response['code'] = 200;
+
+			// And redirect to the admin page
 			$this->response['data'] = array('redirect' => 'admin');
 		}catch(Exception $e){
 
@@ -123,18 +152,6 @@ class Login extends \BaseController {
 	 */
 	public function destroy($id) {
 		//
-	}
-
-	public function createUser() {
-		if(Input::get('password') == Input::get('passwordrepeat')) {
-			$user = Sentry::createUser(array(
-		      'email'     => Input::get('email'),
-		      'password'  => Input::get('password'),
-		      'activated' => true,
-		  ));
-		}else{
-			echo 'Passwords do not match';
-		}
 	}
 
 }

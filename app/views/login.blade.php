@@ -7,13 +7,13 @@
     </div>
     <form class="form-horizontal" role="form" action="/login" id="login">
       <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <label for="inputEmail3" class="col-sm-2 control-label">Email/Username:</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
+          <input class="form-control" id="inputEmail3" name="username" placeholder="Email/Username">
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <label for="inputPassword3" class="col-sm-2 control-label">Password:</label>
         <div class="col-sm-10">
           <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
         </div>
@@ -22,7 +22,7 @@
         <div class="col-sm-offset-2 col-sm-10">
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="remember"> Remember me
+              <input type="checkbox" name="remember" checked="" /> Remember me
             </label>
           </div>
         </div>
