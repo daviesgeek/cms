@@ -2,7 +2,12 @@
 
 class BaseController extends Controller {
 
-	public $response = array();
+	protected $response = array(
+		'data' => array(
+		),
+		'code' => '',
+		'message' => ''
+	);
 
 	public function __construct() {
 
