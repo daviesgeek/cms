@@ -20,7 +20,8 @@ angular.module("admin/app", [
   "restangular",
   "app:common",
   "ngAnimate",
- 
+  "ui.gravatar",
+
   // routes
   "routes"
 ]).
@@ -88,4 +89,18 @@ config(function($urlRouterProvider, $logProvider, RestangularProvider, API_ROOT)
 })
 .run(function($rootScope, $http){
   $http.defaults.withCredentials = true;
+})
+
+.config([
+  'gravatarServiceProvider', function(gravatarServiceProvider) {
+    gravatarServiceProvider.defaults = {
+      size     : 100,
+      "default": 'mm'  // Mystery man as default for missing avatars
+    };
+
+    // Use https endpoint
+    gravatarServiceProvider.secure = true;
+  }
+])
+
 })
