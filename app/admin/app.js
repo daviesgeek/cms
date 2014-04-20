@@ -103,4 +103,7 @@ config(function($urlRouterProvider, $logProvider, RestangularProvider, API_ROOT)
   }
 ])
 
+// Set/get the session data
+.run(function($rootScope, Session) {
+  Session.fetch(false);  
 })
