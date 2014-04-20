@@ -9,6 +9,7 @@ class Logout extends \BaseController {
 
 	public function index() {
 		Sentry::logout();
+		return Redirect::to('login');
 	}
 
 	/**
