@@ -11,6 +11,9 @@ body  .header {
         height: 50px;
         margin-bottom: 0;        
         margin-left: @left-side-width;
+        li.active a{
+            background-color: @gray;
+        }
     }
 
     //Navbar toggle button
@@ -67,9 +70,6 @@ body  .header {
         text-align: center;
         padding: 2px;
     }
-    .navbar .nav > li > a:hover > .label {
-        top: 3px;
-    }
 
     //Logo bar - leftside
     .logo {
@@ -84,6 +84,7 @@ body  .header {
         font-weight: 500;
         height: 50px;
         display: block;
+        color: black;
         //For logo imgs or icons
         .icon {
             margin-right: 10px;

@@ -10,22 +10,35 @@
           <!-- Header Navbar: style can be found in header.less -->
           <nav class="navbar navbar-static-top" role="navigation">
               <!-- Sidebar toggle button-->
-              <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </a>
+              <ul class="nav navbar-nav">
+                <li ui-sref-active="active">
+                  <a ui-sref="home">
+                    <i class="fa fa-home"></i>
+                    <span>Home</span>
+                  </a>
+                </li>
+                <li ui-sref-active="active">
+                <a ui-sref="users">
+                    <i class="fa fa-users"></i>
+                    <span>Users</span>
+                  </a>
+                </li>
+                <li ui-sref-active="active">
+                  <a ui-sref="pages">
+                    <i class="fa fa-sitemap"></i>
+                    <span>Pages</span>
+                  </a>
+                </li>
+              </ul>
               <div class="navbar-right">
                   <ul class="nav navbar-nav">
                       <!-- Messages: style can be found in dropdown.less-->
                       <li class="dropdown messages-menu">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown">
                               <i class="fa fa-envelope"></i>
                               <span class="label label-success">4</span>
                           </a>
                           <ul class="dropdown-menu">
-                              <li class="header">You have 4 messages</li>
                               <li>
                                   <!-- inner menu: contains the actual data -->
                                   <ul class="menu">
@@ -101,7 +114,6 @@
                               <span class="label label-warning">10</span>
                           </a>
                           <ul class="dropdown-menu">
-                              <li class="header">You have 10 notifications</li>
                               <li>
                                   <!-- inner menu: contains the actual data -->
                                   <ul class="menu">
@@ -143,7 +155,6 @@
                               <span class="label label-danger">9</span>
                           </a>
                           <ul class="dropdown-menu">
-                              <li class="header">You have 9 tasks</li>
                               <li>
                                   <!-- inner menu: contains the actual data -->
                                   <ul class="menu">
@@ -214,7 +225,7 @@
                           </a>
                           <ul class="dropdown-menu">
                               <!-- User image -->
-                              <li class="user-header bg-light-blue">
+                              <li class="user-header bg-dark-gray">
                                   <img gravatar-src="'{{session.email}}'" class="img-circle" gravatar-size="230">
                                   <p>
                                       {{session.first_name}}
@@ -247,47 +258,9 @@
               </div>
           </nav>
       </header>
-      <div class="wrapper row-offcanvas row-offcanvas-left">
-          <!-- Left side column. contains the logo and sidebar -->
-          <aside class="left-side sidebar-offcanvas">
-              <!-- sidebar: style can be found in sidebar.less -->
-              <section class="sidebar">
-                  <!-- Sidebar user panel -->
-                  <div class="user-panel">
-                      <div class="pull-left image">
-                        <img gravatar-src="'{{session.email}}'" gravatar-size="100">
-                      </div>
-                      <div class="pull-left info">
-                          <p>Hello, {{session.first_name}}</p>
-
-                          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                      </div>
-                  </div>
-                  <!-- sidebar menu: : style can be found in sidebar.less -->
-                  <ul class="sidebar-menu">
-                    <li ui-sref-active="active">
-                      <a ui-sref="home">
-                        <i class="fa fa-home"></i>
-                        <span>Home</span>
-                      </a>
-                    </li>
-                    <li ui-sref-active="active">
-                      <a ui-sref="users">
-                        <i class="fa fa-users"></i>
-                        <span>Users</span>
-                      </a>
-                    </li>
-                    <li ui-sref-active="active">
-                      <a ui-sref="pages">
-                        <i class="fa fa-sitemap"></i>
-                        <span>Pages</span>
-                      </a>
-                    </li>
-                  </ul>
-              </section>
-              <!-- /.sidebar -->
-          </aside>
-      </div><!-- ./wrapper -->
     </div>
-    <aside class="right-side" ui-view="">
-    </aside><!-- /.right-side -->
+    <div class="wrapper">
+      <div id="content" class="container" ui-view>
+        
+      </div>
+    </div>
