@@ -9,6 +9,10 @@ class Edit extends \Eloquent {
 
   static $pageEdits;
 
+  public function page() {
+    return $this->belongsTo('Page');
+  }
+
   /**
    * Gets a pages edits by url
    * @param  array $page

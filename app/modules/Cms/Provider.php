@@ -9,11 +9,19 @@ class CmsServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register()
-    {
-      $this->app->bind('CMS', function()
-       {
+    public function register() {
+      $this->app->bind('CMS', function() {
          return new \Cms\CMS;
        });
+      $this->registerPage();
     }
+
+    public function registerPage() {
+      $this->app->bind('CMS.Page', function() {
+        return new \Cms\Page;
+      });
+    }
+
 }
+
+$this->app->bind('class.somethingElse', function() {};

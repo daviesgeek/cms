@@ -9,11 +9,9 @@ class Pages extends \BaseController {
    */
   public function index()
   {
-    // $test = new \Cms\Access;
-    \CMS::testing();
-    // $this->response['code'] = 200;
-    // $this->response['data'] = \CMS::getPages();
-    // return $this->getResponse();
+    $this->response['code'] = 200;
+    $this->response['data'] = \CMS::getPages(1)->toArray();
+    return $this->getResponse();
   }
 
   /**

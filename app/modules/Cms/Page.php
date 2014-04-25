@@ -10,8 +10,23 @@ class Page extends \Eloquent{
   static $page;
   static $edits;
 
+  protected $table = 'menu';
+
   public function __construct() {
     
+  }
+
+  public function edit() {
+    return $this->hasMany('Edit');
+  }
+
+  /**
+   * Returns a page by id
+   * @param  integer id
+   * @return object
+   */
+  public function getPage($id) {
+    return \DB::table('menu')->where('id', $id)->get();
   }
 
   /**
@@ -46,7 +61,7 @@ class Page extends \Eloquent{
    * Query scope for checking to see if a page is able to be displayed 
    */
   
-  public function isActive($query) {
+  public function scopeActive($query) {
     return $query->where('active', 1);
   }
 
