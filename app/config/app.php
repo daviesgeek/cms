@@ -181,6 +181,8 @@ return array(
 		'User'            => 'Cms\User',
 		'Group'           => 'Cms\Group',
 		'Throttle'        => 'Cms\Throttle',
+
+		'CMS'          => 'Cms\Facade\Cms',
 	),
 
 );
