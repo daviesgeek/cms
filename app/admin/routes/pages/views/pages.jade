@@ -1,1 +1,48 @@
-h3 This is where you'll be able to manage pages
+.row
+  .col-xs-12
+    .box
+      .box-header
+        h3.box-title Responsive Hover Table
+        .box-tools
+          .input-group
+            input.form-control.input-sm.pull-right(type='text', name='table_search', style='width: 150px;', placeholder='Search')
+            .input-group-btn
+              button.btn.btn-sm.btn-default
+                i.fa.fa-search
+      .box-body.table-responsive.no-padding
+        table.table.table-hover
+          tbody
+            tr
+              th ID
+              th User
+              th Date
+              th Status
+              th Reason
+            tr
+              td 183
+              td John Doe
+              td 11-7-2014
+              td
+                span.label.label-success Approved
+              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+            tr
+              td 219
+              td Jane Doe
+              td 11-7-2014
+              td
+                span.label.label-warning Pending
+              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+            tr
+              td 657
+              td Bob Doe
+              td 11-7-2014
+              td
+                span.label.label-primary Approved
+              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+            tr
+              td 175
+              td Mike Doe
+              td 11-7-2014
+              td
+                span.label.label-danger Denied
+              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
