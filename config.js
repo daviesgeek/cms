@@ -31,7 +31,7 @@ exports.config = {
         '_admin/css/app.css': /^app\/admin/
       },
       order: {
-        before: ['app/styles/main.less']
+        after: ['app/admin/styles/main.less']
       }
     },
     templates: {
