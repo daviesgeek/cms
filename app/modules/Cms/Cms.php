@@ -8,54 +8,66 @@
 
 class CMS{
 
-  protected $menu;
+  protected $pageProvider;
   protected $edit;
 
-  public function __construct(\Cms\Menu $menu, \Cms\Edit $edit) {
-    $this->menu = $menu;
+  public function __construct(\Cms\Page $pageProvider, \Cms\Edit $edit) {
+    $this->pageProvider = $pageProvider;
     $this->edit = $edit;
   }
 
   /**
-   * Returns the menu list
+   * Returns the pageProvider list
    * @return object
    */
   public function getPages() {
-    $menu = $this->menu;
-    return $menu::all();
+    $pageProvider = $this->pageProvider;
+    return $pageProvider::all();
   }
 
   /**
-   * Returns a menu item by id
+   * Returns a pageProvider item by id
    * @param  integer $id
    * @return object
    */
   public function getPage($id) {
-    $menu = $this->menu;
-    return $menu::find($id);
+    $pageProvider = $this->pageProvider;
+    return $pageProvider::find($id);
   }
 
   /**
    * Finds and returns a page by url
    * @param  string $url 
-   * @return false|object
+   * @return false|array
    */
   public function findPageByUrl($url) {
-    $menu = $this->menu;
-    $page = $menu::with(array('edits', 'edits.edit_section'))->where('url', $url)->first();
-    $return = $page->toArray();
-    $return['edits'] = $this->structureEdits($return['edits']);
-    var_dump($return);
-    exit;
-    // return $menu->findByUrl($url);
+    $pageProvider = $this->pageProvider;
+    $page = $pageProvider::with(array('edits', 'edits.edit_section'))->where('url', $url)->first();
+
+    if(empty($page)){
+      return false;
+    }else{
+      $page = $page->toArray();
+    }
+
+    if(!empty($page['edits'])){
+      $page['edits'] = $this->structureEdits($page['edits']);
+    }else{
+      $page['edits'] = false;
+    }
+
+    return $page;
   }
 
   /**
    * Restructure the edits array so that the name is the key
    * @param  array $edits
-   * @return array
+   * @return false|array
    */
   private function structureEdits($edits) {
+    if(empty($edits))
+      return false;
+
     // Create a new array
     $newEdits = array();
 

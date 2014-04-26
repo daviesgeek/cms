@@ -5,12 +5,12 @@
  * @created March 31st, 2014
  */
 
-class Menu extends \Eloquent{
+class Page extends \Eloquent{
 
-  protected $table = 'menu';
+  protected $table = 'page';
 
   public function edits() {
-    return $this->hasMany('\Cms\Edit', 'pageID');
+    return $this->hasMany('\Cms\Edit', 'page_id');
   }
 
   /**
@@ -22,7 +22,7 @@ class Menu extends \Eloquent{
   public static function doesExist($page) {
 
     // Get this page
-    self::$page = \DB::table('menu')->where('url', $page)->first();
+    self::$page = \DB::table('page')->where('url', $page)->first();
     
     // If this page exists
     if(!empty(self::$page)) {
