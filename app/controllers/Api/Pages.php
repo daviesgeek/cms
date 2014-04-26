@@ -10,7 +10,7 @@ class Pages extends \BaseController {
   public function index()
   {
     $this->response['code'] = 200;
-    $this->response['data'] = \CMS::getPages(1)->toArray();
+    $this->response['data'] = \CMS::page()->getAll();
     return $this->getResponse();
   }
 

@@ -41,4 +41,8 @@ class Page extends \Eloquent{
     }
   }
 
+  public function getAll() {
+    return $this->all()->toArray();
+  }
+
 }
