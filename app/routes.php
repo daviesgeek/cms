@@ -51,9 +51,9 @@ Route::get('{slug?}', array(
   'uses'  => 'CMSController@index'
 ))->where('slug', '.+');
 
-App::missing(function($exception) {
-  return Response::view('errors.missing', array(), 404);
-});
+// App::missing(function($exception) {
+//   return Response::view('errors.missing', array(), 404);
+// });
 
 // App::error(function($exception) {
 //   return Response::view('errors.missing', array(), 500);
