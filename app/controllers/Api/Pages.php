@@ -64,7 +64,10 @@ class Pages extends \BaseController {
    */
   public function update($id)
   {
-    //
+    $input = \Input::except('id');
+    \CMS::page()->  find($id)->update($input);
+    $this->response['message'] = 'Page updated';
+    return $this->getResponse();
   }
 
   /**
