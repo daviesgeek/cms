@@ -21,7 +21,7 @@ angular.module("admin/app", [
   "app:common",
   "ngAnimate",
   "ui.gravatar",
-
+  "ui.bootstrap",
   // routes
   "routes"
 ]).
