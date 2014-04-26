@@ -9,8 +9,8 @@ class DatabaseSeeder extends Seeder {
         $this->call('Groups');
         $this->command->info('groups seeded!');
 
-        $this->call('Menu');
-        $this->command->info('menu seeded!');
+        $this->call('Page');
+        $this->command->info('pages seeded!');
 
         $this->call('Templates');
         $this->command->info('templates seeded!');
