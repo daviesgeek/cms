@@ -55,6 +55,6 @@ App::missing(function($exception) {
   return Response::view('errors.missing', array(), 404);
 });
 
-App::error(function($exception) {
-  return Response::view('errors.missing', array(), 500);
-});
+// App::error(function($exception) {
+//   return Response::view('errors.missing', array(), 500);
+// });
