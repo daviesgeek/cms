@@ -7,15 +7,38 @@
 
 class Menu extends \Eloquent{
 
-  static $menu;
+  protected $table = 'menu';
+
+  public function edits() {
+    return $this->hasMany('\Cms\Edit', 'pageID');
+  }
 
   /**
-   * Gets all the menu items then returns a new instance of this class
-   * @return Class instance of the \CMS\Menu class
+   * Checks to see if the page exists or not
+   * And returns either a static instance of this class or false
+   * @param  string $page
+   * @return false|void
    */
-  public static function getAll() {
-    self::$menu = \DB::table('menu')->where('status', '1')->get();
-    return new self;
+  public static function doesExist($page) {
+
+    // Get this page
+    self::$page = \DB::table('menu')->where('url', $page)->first();
+    
+    // If this page exists
+    if(!empty(self::$page)) {
+
+      // Get the template name
+      self::$page->template = \DB::table('template')->where('id', self::$page->template)->pluck('name');
+      // Get the edits
+      self::$edits = \Cms\Edit::get(self::$page, true);
+      
+      // Return a new instance of this class
+      return new static;
+    }else{
+
+      // Else return false
+      return false;
+    }
   }
 
 }

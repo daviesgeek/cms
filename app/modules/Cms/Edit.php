@@ -7,10 +7,14 @@
 
 class Edit extends \Eloquent {
 
-  static $pageEdits;
+  protected $table = 'edit';
 
   public function page() {
-    return $this->belongsTo('Page');
+    return $this->belongsTo('\Cms\Page', 'pageID');
+  }
+
+  public function edit_section() {
+    return $this->belongsTo('\Cms\EditSection', 'id');
   }
 
   /**
@@ -19,7 +23,7 @@ class Edit extends \Eloquent {
    * @param  boolean $returnClass whether to return a class or not
    * @return void|object either object or an instance of a class
    */
-  public static function get($page, $returnClass=true) {
+  public static function get($page) {
     
     // Get the edit sections and the edits
     $editSections = \DB::table('edit_section')->get();
@@ -29,17 +33,16 @@ class Edit extends \Eloquent {
     foreach ($editSections as $section) {
       foreach ($edits as $edit) {
         if($section->id == $edit->editSectionID){
-          self::$pageEdits[$section->name] = $edit;
+          $pageEdits[$section->name] = $edit;
           break;
         }
       }
     }
 
-    if($returnClass){
-      return self::$pageEdits;
-    }else{
-      return new self;
-    }
+    if(empty($pageEdits))
+      return false;
+    return $pageEdits;
+
   }
 
 

@@ -17,11 +17,9 @@ class CmsServiceProvider extends ServiceProvider {
     }
 
     public function registerPage() {
-      $this->app->bind('CMS.Page', function() {
-        return new \Cms\Page;
+      $this->app->bind('CMS.Menu', function() {
+        return new \Cms\Menu;
       });
     }
 
 }
-
-$this->app->bind('class.somethingElse', function() {};
