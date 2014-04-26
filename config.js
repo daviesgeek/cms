@@ -21,7 +21,10 @@ exports.config = {
       joinTo: {
         'public.js': /^(app\/assets\/js|bower_components\/(bootstrap|jquery))/,
         '_admin/js/vendor.js': /^bower_components/,
-        '_admin/js/app.js': /^app\/admin/
+        '_admin/js/app.js': /^app\/admin/,
+      },
+      order: {
+        before: ['bower_components/jquery/dist/jquery.js']
       }
     },
     stylesheets: {
