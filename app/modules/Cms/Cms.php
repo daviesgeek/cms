@@ -9,20 +9,19 @@
 class CMS{
 
   protected $pageProvider;
-  protected $edit;
+  protected $editProvider;
 
-  public function __construct(\Cms\Page $pageProvider, \Cms\Edit $edit) {
+  public function __construct(\Cms\Page $pageProvider, \Cms\Edit $editProvider) {
     $this->pageProvider = $pageProvider;
-    $this->edit = $edit;
+    $this->editProvider = $editProvider;
   }
 
-  /**
-   * Returns the pageProvider list
-   * @return object
-   */
-  public function getPages() {
-    $pageProvider = $this->pageProvider;
-    return $pageProvider::all();
+  public function page() {
+    return $this->pageProvider;
+  }
+
+  public function edit() {
+    return $this->editProvider;
   }
 
   /**
