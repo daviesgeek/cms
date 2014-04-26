@@ -41,7 +41,7 @@ class CMS{
    */
   public function findPageByUrl($url) {
     $pageProvider = $this->pageProvider;
-    $page = $pageProvider::with(array('edits', 'edits.edit_section', 'template'))->where('url', $url)->first();
+    $page = $pageProvider::with(array('edits', 'edits.edit_section', 'template'))->where('url', $url)->display()->first();
 
     if(empty($page)){
       return false;
