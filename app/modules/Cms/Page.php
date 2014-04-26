@@ -9,12 +9,19 @@ class Page extends \Eloquent{
 
   protected $table = 'page';
 
+  protected $guarded = array();
+  protected $fillable = array();
+
   public function edits() {
     return $this->hasMany('\Cms\Edit', 'page_id');
   }
 
   public function template() {
     return $this->hasOne('\Cms\Template', 'id');
+  }
+
+  public function scopeDisplay($query) {
+    return $query->where('active', 1);
   }
 
   /**
