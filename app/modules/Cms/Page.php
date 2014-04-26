@@ -13,6 +13,10 @@ class Page extends \Eloquent{
     return $this->hasMany('\Cms\Edit', 'page_id');
   }
 
+  public function template() {
+    return $this->hasOne('\Cms\Template', 'id');
+  }
+
   /**
    * Checks to see if the page exists or not
    * And returns either a static instance of this class or false

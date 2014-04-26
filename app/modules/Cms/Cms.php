@@ -41,7 +41,7 @@ class CMS{
    */
   public function findPageByUrl($url) {
     $pageProvider = $this->pageProvider;
-    $page = $pageProvider::with(array('edits', 'edits.edit_section'))->where('url', $url)->first();
+    $page = $pageProvider::with(array('edits', 'edits.edit_section', 'template'))->where('url', $url)->first();
 
     if(empty($page)){
       return false;
@@ -49,10 +49,14 @@ class CMS{
       $page = $page->toArray();
     }
 
-    if(!empty($page['edits'])){
+    if(!empty($page['edits'])) {
       $page['edits'] = $this->structureEdits($page['edits']);
     }else{
       $page['edits'] = false;
+    }
+
+    if(!empty($page['template'])) {
+      $page['template'] = $page['template']['name'];
     }
 
     return $page;
