@@ -9,6 +9,8 @@ angular
   .animation('.slide-left-closed', require('./animations/slide-left'))
   .animation('.slide-right-closed', require('./animations/slide-right'))
   .animation('.scroll-top', require('./animations/scroll-top'))
+  .animation('.slide-up', require('./animations/slide-up'))
+  .animation('.slide-down', require('./animations/slide-down'))
   .filter('capitalize', require('./filters/capitalize'))
   .factory('User', require('./resources/user'))
   .factory('Page', require('./resources/page'))
