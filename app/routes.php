@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Home@index');
+// Route::get('/', 'Home@index');
 
 Route::group(array('before' => 'guest'), function() {
   Route::resource('login', 'Login', array(
@@ -53,4 +53,8 @@ Route::get('{slug?}', array(
 
 App::missing(function($exception) {
   return Response::view('errors.missing', array(), 404);
+});
+
+App::error(function($exception) {
+  return Response::view('errors.missing', array(), 500);
 });
