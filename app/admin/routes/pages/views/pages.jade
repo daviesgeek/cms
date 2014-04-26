@@ -1,48 +1,59 @@
-.row
+.row#pages
   .col-xs-12
     .box
       .box-header
-        h3.box-title Responsive Hover Table
+        h3.box-title Pages
         .box-tools
           .input-group
             input.form-control.input-sm.pull-right(type='text', name='table_search', style='width: 150px;', placeholder='Search')
             .input-group-btn
               button.btn.btn-sm.btn-default
                 i.fa.fa-search
-      .box-body.table-responsive.no-padding
-        table.table.table-hover
-          tbody
-            tr
-              th ID
-              th User
-              th Date
-              th Status
-              th Reason
-            tr
-              td 183
-              td John Doe
-              td 11-7-2014
-              td
-                span.label.label-success Approved
-              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-            tr
-              td 219
-              td Jane Doe
-              td 11-7-2014
-              td
-                span.label.label-warning Pending
-              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-            tr
-              td 657
-              td Bob Doe
-              td 11-7-2014
-              td
-                span.label.label-primary Approved
-              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
-            tr
-              td 175
-              td Mike Doe
-              td 11-7-2014
-              td
-                span.label.label-danger Denied
-              td Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.
+    .box.col-md-12
+      .row
+        .col-md-3 Name
+        .col-md-3 Status
+        .col-md-3
+      div(ng-repeat="page in pages")
+        .display.row
+          .col-md-3
+            span {{page.name}}
+          .col-md-3
+            span.label.label-success(ng-if="page.active == 1", ng-click="toggleActive(page)") Visible
+            span.label.label-danger(ng-if="page.active == 0", ng-click="toggleActive(page)") Hidden
+          .col-md-3.controls
+            button.btn.btn-default
+              i.fa.fa-edit
+            button.btn.btn-danger
+              i.fa.fa-trash-o
+        form.form.form-horizontal.row
+          .col-md-5.col-md-offset-2
+            .form-group
+              label.control-label.col-lg-3 Name
+              .col-lg-9
+                input.form-control(ng-model="page.name")
+            .form-group
+              label.control-label.col-lg-3 H1 Tag
+              .col-lg-9
+                input.form-control(ng-model="page.h1")
+            .form-group
+              label.control-label.col-lg-3 Title Tag:
+              .col-lg-9
+                input.form-control(ng-model="page.title")
+            .form-group
+              label.control-label.col-lg-3 Description
+              .col-lg-9
+                textarea.form-control(ng-model="page.description")
+            .form-group
+              label.control-label.col-lg-3 Template
+              .col-lg-9
+                select.form-control(ng-model="page.template")
+                  option(value="1") Main
+          .col-md-3
+            .btn-group(data-toggle='buttons')
+              label.btn.btn-primary
+                input(type='radio', name='status', value="0", ng-model="page.active")
+                | Hidden
+              label.btn.btn-primary
+                input(type='radio', name='status', value="1", ng-model="page.active")
+                | Visible

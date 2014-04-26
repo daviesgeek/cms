@@ -11,6 +11,7 @@ angular
   .animation('.scroll-top', require('./animations/scroll-top'))
   .filter('capitalize', require('./filters/capitalize'))
   .factory('User', require('./resources/user'))
+  .factory('Page', require('./resources/page'))
   .factory('Session', require('./services/session'))
   .config(function($httpProvider){
     var interceptor = ['$rootScope', '$location', '$q', '$injector', function($rootScope, $location, $q, $injector) {
