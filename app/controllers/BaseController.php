@@ -1,11 +1,13 @@
 <?php
 
+use Illuminate\Support\MessageBag;
+
 class BaseController extends Controller {
 
 	protected $response = array(
-		'data' => array(
-		),
-		'code' => '',
+		'data' => array(),
+		'meta' => array(),
+		'code' => 200,
 		'message' => ''
 	);
 
@@ -48,16 +50,16 @@ class BaseController extends Controller {
 	public function getResponse() {
 		if(!empty($this->response)) {
 
-			$code = $this->response['code'] ? $this->response['code'] : 200;
+			$meta = isset($this->response['meta']) ? $this->response['meta'] : null;
 
 			$wrapper = array(
 				'status'    => array(
-					'code'    => $code,
+					'code'    => $this->response['code'],
 					'message' => $this->response['message']
 				),
 				'info'      => null,
 				'data'      => $this->response['data'],
-				'meta'      => null
+				'meta'      => $meta
 			);
 
 
@@ -69,7 +71,7 @@ class BaseController extends Controller {
 
 			return Response::json(
 				$wrapper,
-				$code,
+				$this->response['code'],
 				array(
 					'Access-Control-Allow-Origin' => Config::get('app.Access-Control-Allow-Origin'),
 					'Access-Control-Allow-Credentials' => 'true',
@@ -83,6 +85,16 @@ class BaseController extends Controller {
 
 	public function missingMethod($parameters = array()) {
 		var_dump($parameters);
+	}
+
+	public function validationError($message = '', $errors = array()) {
+		$this->response['code'] = 422;
+		$this->response['message'] = $message;
+		if($errors instanceof MessageBag)
+			$errors = $errors->toArray();
+
+		$this->response['meta']['errors'] = $errors;
+		return $this->getResponse();
 	}
 
 }
