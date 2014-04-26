@@ -1,6 +1,6 @@
 <?php
 
-class CMS extends BaseController {
+class CMSController extends \BaseController {
 
   public function index($page) {
     $this->getPage($page);

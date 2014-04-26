@@ -47,8 +47,8 @@ Route::group(array(
 });
 
 Route::get('{slug?}', array(
-  'as'    => 'CMS',
-  'uses'  => 'CMS@index'
+  'as'    => 'CMSController',
+  'uses'  => 'CMSController@index'
 ))->where('slug', '.+');
 
 App::missing(function($exception) {
