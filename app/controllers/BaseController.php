@@ -9,6 +9,8 @@ class BaseController extends Controller {
 		'message' => ''
 	);
 
+	public $page;
+
 	public function __construct() {
 
 	}
@@ -27,18 +29,15 @@ class BaseController extends Controller {
 	/**
 	 * Gets the edits for the page
 	 * @param  string $page url passed in from the routing
-	 * @return void
+	 * @return object
 	 */
 	public function getPage($page) {
-		$thisPage = $this->data = \Cms\Page::doesExist($page);
-
-		if(!$thisPage){
+		$thisPage = \CMS::findPageByUrl($page);
+		if(empty($thisPage)){
 			App::abort(404);
-			return;
+			return false;
 		}
-
-		$this->data->edits = $thisPage::$edits;
-		$this->data->page = $thisPage::$page;
+		return $thisPage;
 	}
 
 	/**
@@ -77,6 +76,10 @@ class BaseController extends Controller {
 			);
 
 		}
+	}
+
+	public function missingMethod($parameters = array()) {
+		var_dump($parameters);
 	}
 
 }
