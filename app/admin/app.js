@@ -29,7 +29,7 @@ config(function($urlRouterProvider, $logProvider, RestangularProvider, API_ROOT)
   // setup Restangular
   RestangularProvider.setBaseUrl(API_ROOT);
   RestangularProvider.setRestangularFields({
-    id: 'ID'
+    id: 'id'
   });
 
   RestangularProvider.setResponseExtractor(function(response, operation, what, url) {
