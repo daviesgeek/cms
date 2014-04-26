@@ -21,6 +21,7 @@ class CreatePageTable extends Migration {
       $table->integer('template')->default('1');
       $table->tinyInteger('active')->default('0');
       $table->tinyInteger('locked')->default('0');
+      $table->timestamps();
     });
   }
 

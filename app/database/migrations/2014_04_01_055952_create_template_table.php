@@ -15,6 +15,7 @@ class CreateTemplateTable extends Migration {
 		Schema::create('template', function($table) {
 			$table->increments('id');
 			$table->string('name');
+			$table->timestamps();
 		});
 	}
 

@@ -15,6 +15,7 @@ class CreateEditSectionTable extends Migration {
 		Schema::create('edit_section', function($table) {
 			$table->increments('id');
 			$table->string('name');
+			$table->timestamps();
 		});
 	}
 

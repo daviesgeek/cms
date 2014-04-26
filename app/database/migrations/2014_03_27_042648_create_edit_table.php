@@ -17,6 +17,7 @@ class CreateEditTable extends Migration {
 			$table->integer('page_id');
 			$table->integer('edit_section_id');
 			$table->binary('text');
+			$table->timestamps();
 		});
 	}
 
