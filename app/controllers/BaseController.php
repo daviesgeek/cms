@@ -10,6 +10,7 @@ class BaseController extends Controller {
 	);
 
 	public $page;
+	public $data = array();
 
 	public function __construct() {
 
