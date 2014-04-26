@@ -48,9 +48,11 @@ class BaseController extends Controller {
 	public function getResponse() {
 		if(!empty($this->response)) {
 
+			$code = $this->response['code'] ? $this->response['code'] : 200;
+
 			$wrapper = array(
 				'status'    => array(
-					'code'    => $this->response['code'],
+					'code'    => $code,
 					'message' => $this->response['message']
 				),
 				'info'      => null,
@@ -67,7 +69,7 @@ class BaseController extends Controller {
 
 			return Response::json(
 				$wrapper,
-				$this->response['code'],
+				$code,
 				array(
 					'Access-Control-Allow-Origin' => Config::get('app.Access-Control-Allow-Origin'),
 					'Access-Control-Allow-Credentials' => 'true',
