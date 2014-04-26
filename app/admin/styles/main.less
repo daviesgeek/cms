@@ -1,0 +1,37 @@
+/**
+ * Bootstrap overrides stuffs
+ */
+
+@import "theme/_AdminLTE.less";
+@import "_base.less";
+
+ .navbar-nav > li > span {
+   padding-top: 15px;
+   padding-bottom: 15px;
+ }
+ #navigation{
+  li a, li span{
+    color: black;
+  }
+  li .label{
+    color: white;
+  }
+
+ }
+
+#pages{
+  [class*='col-']{
+    line-height: 45px;
+  }
+  .display{
+    border-top: 1px solid #ddd;
+    .controls{
+      padding: 0px;
+      margin-top: -1px;
+    }
+  }
+  .form{
+    margin-top: 10px;
+    // display: none;
+  }
+}
