@@ -13,6 +13,7 @@ angular
   .animation('.slide-down', require('./animations/slide-down'))
   .directive('epiValidate', require('./directives/epi-validate'))
   .filter('capitalize', require('./filters/capitalize'))
+  .filter('toUrl', require('./filters/toUrl'))
   .factory('User', require('./resources/user'))
   .factory('Page', require('./resources/page'))
   .factory('Session', require('./services/session'))
