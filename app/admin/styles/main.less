@@ -20,7 +20,11 @@
  }
 
 #pages{
-  [class*='col-']{
+  .thead{
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .row > [class*='col-']{
     line-height: 45px;
   }
   .display{
@@ -31,7 +35,10 @@
     }
   }
   .form{
-    margin-top: 10px;
-    // display: none;
+    margin-top: 35px;
+    display: none;
+    [class*='col-']{
+      line-height: 20px;
+    }
   }
 }

@@ -10,50 +10,117 @@
               button.btn.btn-sm.btn-default
                 i.fa.fa-search
     .box.col-md-12
-      .row
+      .thead.row
         .col-md-3 Name
         .col-md-3 Status
         .col-md-3
+          button.btn.btn-success(
+            ng-click="openCreatePage()"
+          )
+            i.fa.fa-plus &nbsp;
+            | Create new page
+      .row
+        form.form.form-horizontal.row(ng-class="createPage == true ? 'slide-down' : 'slide-up'", ng-submit="saveNewPage(newPage)", name="new-page", novalidate, epi-validate-show-messages)
+          .col-md-5.col-md-offset-2
+            .form-group
+              label.col-md-3.control-label(for='newName') Name:
+              .col-md-9
+                input.form-control(id="newName", name="name+$index", type='text', ng-model="newPage.name", epi-validate="required", epi-validate-messages="{required: 'A name is required'}")
+            .form-group
+              label.col-md-3.control-label(for='newH1') H1:
+              .col-md-9
+                input.form-control(id="newH1", name="h1+$index", type='text', ng-model="newPage.h1", epi-validate="required", epi-validate-messages="{required: 'An H1 tag is required'}")
+            .form-group
+              label.col-md-3.control-label(for='newTitle') Title:
+              .col-md-9
+                input.form-control(id="newTitle", name="title+$index", type='text', ng-model="newPage.title", epi-validate="required", epi-validate-messages="{required: 'A title is required'}")
+            .form-group
+              label.col-md-3.control-label(for='newDescription') Description:
+              .col-md-9
+                textarea.form-control(id="newDescription", name="description+$index", type='text', ng-model="newPage.description")
+            .form-group
+              label.col-md-3.control-label(for='newKeywords') Keywords:
+              .col-md-9
+                textarea.form-control(id="newKeywords", name="keywords+$index", type='text', ng-model="newPage.keywords")
+            .form-group
+              label.col-md-3.control-label(for='newtemplate') Template:
+              .col-md-9
+                select.form-control(id="newTemplate", name="template+$index", ng-model="newPage.template",  epi-validate="required", epi-validate-messages="{required: 'A template is required'}")
+                  option(value="1") Main
+            .form-group
+              .col-md-9.col-md-offset-3
+                button.btn.btn-primary(type="submit") Create Page
+          .col-md-3
+            div.btn-group
+              button.btn.btn-default(
+                type='button',
+                ng-model='newPage.active',
+                btn-radio="'0'",
+                ng-class="{'active': newPage.active == 0}"
+              ) Hidden
+              button.btn.btn-default(
+                type='button',
+                ng-model='newPage.active',
+                btn-radio="'1'",
+                ng-class="{'active': newPage.active == 1}"
+              ) Visible
       div(ng-repeat="page in pages")
         .display.row
           .col-md-3
-            span {{page.name}}
+            span 
+              i.fa.fa-lock(ng-if="page.locked == 1") &nbsp;
+              {{page.name}}
           .col-md-3
-            span.label.label-success(ng-if="page.active == 1", ng-click="toggleActive(page)") Visible
-            span.label.label-danger(ng-if="page.active == 0", ng-click="toggleActive(page)") Hidden
+            span.label.label-success(ng-if="page.active == 1", ng-click="toggleActive(page, 0)") Visible
+            span.label.label-danger(ng-if="page.active == 0", , ng-click="toggleActive(page, 1)") Hidden
           .col-md-3.controls
-            button.btn.btn-default
-              i.fa.fa-edit
-            button.btn.btn-danger
+            button.btn.btn-default(ng-show="editingPages[page.id] != true", ng-click="openEdit(page)")
+              i.fa.fa-edit &nbsp;
+              | Edit
+            button.btn.btn-primary(ng-show="editingPages[page.id] == true", ng-click="closeEdit(page)")
+              | Close
+            button.btn.btn-danger(ng-if="page.locked != 1", ng-click="deletePage(page)")
               i.fa.fa-trash-o
-        form.form.form-horizontal.row
+        form.form.form-horizontal.row(ng-class="editingPages[page.id] == true ? 'slide-down' : 'slide-up'", novalidate)
           .col-md-5.col-md-offset-2
             .form-group
-              label.control-label.col-lg-3 Name
-              .col-lg-9
-                input.form-control(ng-model="page.name")
+              label.col-md-3.control-label(for='name+$index') Name:
+              .col-md-9
+                input.form-control(id="name+$index", name="name+$index", type='text', ng-model="page.name")
             .form-group
-              label.control-label.col-lg-3 H1 Tag
-              .col-lg-9
-                input.form-control(ng-model="page.h1")
+              label.col-md-3.control-label(for='h1+$index') H1:
+              .col-md-9
+                input.form-control(id="h1+$index", name="h1+$index", type='text', ng-model="page.h1")
             .form-group
-              label.control-label.col-lg-3 Title Tag:
-              .col-lg-9
-                input.form-control(ng-model="page.title")
+              label.col-md-3.control-label(for='title+$index') Title:
+              .col-md-9
+                input.form-control(id="title+$index", name="title+$index", type='text', ng-model="page.title")
             .form-group
-              label.control-label.col-lg-3 Description
-              .col-lg-9
-                textarea.form-control(ng-model="page.description")
+              label.col-md-3.control-label(for='description+$index') Description:
+              .col-md-9
+                textarea.form-control(id="description+$index", name="description+$index", type='text', ng-model="page.description")
             .form-group
-              label.control-label.col-lg-3 Template
-              .col-lg-9
-                select.form-control(ng-model="page.template")
+              label.col-md-3.control-label(for='keywords+$index') Keywords:
+              .col-md-9
+                textarea.form-control(id="keywords+$index", name="keywords+$index", type='text', ng-model="page.keywords")
+            .form-group
+              label.col-md-3.control-label(for='template+$index') Template:
+              .col-md-9
+                select.form-control(id="template+$index", name="template+$index", ng-model="page.template")
                   option(value="1") Main
           .col-md-3
-            .btn-group(data-toggle='buttons')
-              label.btn.btn-primary
-                input(type='radio', name='status', value="0", ng-model="page.active")
-                | Hidden
-              label.btn.btn-primary
-                input(type='radio', name='status', value="1", ng-model="page.active")
-                | Visible
+            div.btn-group
+              button.btn.btn-default(
+                type='button',
+                ng-model='page.active',
+                btn-radio="'0'",
+                ng-click="toggleActive(page, 0)",
+                ng-class="{'active': page.active == 0}"
+              ) Hidden
+              button.btn.btn-default(
+                type='button',
+                ng-model='page.active',
+                btn-radio="'1'",
+                ng-click="toggleActive(page, 1)",
+                ng-class="{'active': page.active == 1}"
+              ) Visible
