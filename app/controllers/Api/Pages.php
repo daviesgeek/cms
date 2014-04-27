@@ -31,7 +31,29 @@ class Pages extends \BaseController {
    */
   public function store()
   {
-    //
+    $input = \Input::all();
+    $validator = \Validator::make(
+      $input,
+      array(
+        'name'        => 'required|',
+        'url'         => 'required|alpha_dash',
+        'h1'          => 'required|',
+        'title'       => 'required|',
+        'template'    => 'required|numeric',
+        'active'      => 'numeric',
+        'locked'      => 'numeric',
+        'hidden'      => 'numeric'
+      )
+    );
+    if($validator->fails()){
+      return $this->validationError('Cannot create page', $validator->errors());
+    }else{
+      $page = \CMS::page()->create($input);
+      $this->response['message'] = 'Page created';
+      $this->response['data'] = $page->toArray();
+      return $this->getResponse();
+    }
+
   }
 
   /**
@@ -65,7 +87,7 @@ class Pages extends \BaseController {
   public function update($id)
   {
     $input = \Input::except('id');
-    \CMS::page()->  find($id)->update($input);
+    \CMS::page()->find($id)->update($input);
     $this->response['message'] = 'Page updated';
     return $this->getResponse();
   }
@@ -78,7 +100,9 @@ class Pages extends \BaseController {
    */
   public function destroy($id)
   {
-    //
+    \CMS::page()->find($id)->delete();
+    $this->response['message'] = 'Page deleted';
+    return $this->getResponse();
   }
 
 }
