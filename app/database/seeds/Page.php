@@ -15,7 +15,7 @@ class Page extends Seeder {
               'url'       => '/',
               'h1'        => 'Home',
               'title'     => 'Home',
-              'template'  => 1,
+              'template_id'  => 1,
               'active'    => 1,
               'locked'    => 1,
               'hidden'    => 1
@@ -27,7 +27,7 @@ class Page extends Seeder {
               'url'       => 'login',
               'h1'        => 'Login',
               'title'     => 'Login',
-              'template'  => 1,
+              'template_id'  => 1,
               'active'    => 1,
               'locked'    => 1,
               'hidden'    => 1

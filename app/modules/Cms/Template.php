@@ -10,8 +10,8 @@ class Template extends \Eloquent {
 
   protected $table = 'template';
 
-  public function page() {
-    return $this->belongsTo('\Cms\Page', 'template');
+  public function pages() {
+    return $this->hasMany('\Cms\Page');
   }
 
-}
+} 

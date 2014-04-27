@@ -17,7 +17,7 @@ class Page extends \Eloquent{
   }
 
   public function template() {
-    return $this->hasOne('\Cms\Template', 'id');
+    return $this->belongsTo('\Cms\Template');
   }
 
   public function scopeDisplay($query) {
