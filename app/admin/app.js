@@ -72,7 +72,7 @@ config(function($urlRouterProvider, $logProvider, RestangularProvider, API_ROOT)
     elem.indexOfID = function(id) {
 
       for(var i=0; i<elem.length; ++i) {
-        if(elem[i].ID == id)
+        if(elem[i].id == id)
           return i;
       }
 
