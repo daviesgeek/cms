@@ -12,6 +12,7 @@ angular
   .animation('.slide-up', require('./animations/slide-up'))
   .animation('.slide-down', require('./animations/slide-down'))
   .directive('epiValidate', require('./directives/epi-validate'))
+  .directive('feedbackButton', require('./directives/feedback-button'))
   .filter('capitalize', require('./filters/capitalize'))
   .filter('toUrl', require('./filters/toUrl'))
   .factory('User', require('./resources/user'))
