@@ -7,11 +7,15 @@
 module.exports = function (Restangular) {
   var Page = Restangular.all('pages');
 
-  Restangular.extendModel('data/groups', function(collection){
-    if(('one' in collection))
-      return;
+  Restangular.extendCollection('pages', function(collection) {
+    if(!('one' in collection))
+      return collection;
 
+    collection.addRestangularMethod('create', 'post');
+
+    return collection;
   });
-  
+
+
   return Page;
 }
