@@ -35,14 +35,14 @@ class Pages extends \BaseController {
     $validator = \Validator::make(
       $input,
       array(
-        'name'        => 'required|',
-        'url'         => 'required|alpha_dash',
-        'h1'          => 'required|',
-        'title'       => 'required|',
-        'template'    => 'required|numeric',
-        'active'      => 'numeric',
-        'locked'      => 'numeric',
-        'hidden'      => 'numeric'
+        'name'           => 'required|',
+        'url'            => 'required|alpha_dash',
+        'h1'             => 'required|',
+        'title'          => 'required|',
+        'template_id'    => 'required|numeric',
+        'active'         => 'numeric',
+        'locked'         => 'numeric',
+        'hidden'         => 'numeric'
       )
     );
     if($validator->fails()){
@@ -86,7 +86,7 @@ class Pages extends \BaseController {
    */
   public function update($id)
   {
-    $input = \Input::except('id');
+    $input = \Input::except('id', 'template');
     \CMS::page()->find($id)->update($input);
     $this->response['message'] = 'Page updated';
     return $this->getResponse();

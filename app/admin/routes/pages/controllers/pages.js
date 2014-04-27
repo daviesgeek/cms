@@ -25,7 +25,7 @@ module.exports = function ($rootScope, $scope, $log, pages, $state, $filter) {
 
   $scope.openCreatePage = function() {
     $scope.createPage = true;
-    $scope.newPage = {active: 1};
+    $scope.newPage = {active: 1, template_id: 1};
   }
 
   $scope.saveNewPage = function(page) {
@@ -43,6 +43,11 @@ module.exports = function ($rootScope, $scope, $log, pages, $state, $filter) {
   $scope.deletePage = function(page) {
     page.remove().then(function(response) {
       $scope.pages.splice($scope.pages.indexOfID(page.id), 1);
+    });
+  }
+
+  $scope.updatePage = function(page) {
+    page.patch().then(function(response) {
     });
   }
 

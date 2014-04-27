@@ -45,7 +45,7 @@
             .form-group
               label.col-md-3.control-label(for='newtemplate') Template:
               .col-md-9
-                select.form-control(id="newTemplate", name="template+$index", ng-model="newPage.template",  epi-validate="required", epi-validate-messages="{required: 'A template is required'}")
+                select.form-control(id="newTemplate", name="template_id+$index", ng-model="newPage.template_id",  epi-validate="required", epi-validate-messages="{required: 'A template is required'}")
                   option(value="1") Main
             .form-group
               .col-md-9.col-md-offset-3
@@ -69,7 +69,7 @@
           .col-md-3
             span 
               i.fa.fa-lock(ng-if="page.locked == 1") &nbsp;
-              {{page.name}}
+              | {{page.name}}
           .col-md-3
             span.label.label-success(ng-if="page.active == 1", ng-click="toggleActive(page, 0)") Visible
             span.label.label-danger(ng-if="page.active == 0", , ng-click="toggleActive(page, 1)") Hidden
@@ -80,8 +80,13 @@
             button.btn.btn-primary(ng-show="editingPages[page.id] == true", ng-click="closeEdit(page)")
               | Close
             button.btn.btn-danger(ng-if="page.locked != 1", ng-click="deletePage(page)")
-              i.fa.fa-trash-o
-        form.form.form-horizontal.row(ng-class="editingPages[page.id] == true ? 'slide-down' : 'slide-up'", novalidate)
+              i.fa.fa-trash-o &nbsp;
+              | Delete
+        form.form.form-horizontal.row(
+          ng-class="editingPages[page.id] == true ? 'slide-down' : 'slide-up'",
+          ng-submit="updatePage(page)",
+          novalidate
+          )
           .col-md-5.col-md-offset-2
             .form-group
               label.col-md-3.control-label(for='name+$index') Name:
@@ -104,10 +109,13 @@
               .col-md-9
                 textarea.form-control(id="keywords+$index", name="keywords+$index", type='text', ng-model="page.keywords")
             .form-group
-              label.col-md-3.control-label(for='template+$index') Template:
+              label.col-md-3.control-label(for='template_id+$index') Template:
               .col-md-9
-                select.form-control(id="template+$index", name="template+$index", ng-model="page.template")
+                select.form-control(id="template_id+$index", name="template_id+$index", ng-model="page.template_id")
                   option(value="1") Main
+            .form-group
+              .col-md-9.col-md-offset-3
+                button.btn.btn-primary(type="submit") Save Page
           .col-md-3
             div.btn-group
               button.btn.btn-default(
