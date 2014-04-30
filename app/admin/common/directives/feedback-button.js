@@ -11,14 +11,13 @@ module.exports = function() {
     restrict: 'A',
     link: function(scope, element, attrs) {
 
-      // Get the promise tracker
-      var tracker = scope[attrs.feedbackTracker];
-
       var disabledClass = 'disabled';
 
-      // Watch the tracker
-      scope.$watch(tracker.active, function(val, oldVal) {
+      element.html(attrs.feedbackButton);
 
+      // Watch the tracker
+      scope.$watch(attrs.feedbackTracker, function(val, oldVal) {
+        console.log(val);
         // When it changes to active, change the html/text in the button
         if(val == true){
           element.html('<i class="fa fa-spinner fa-spin"></i> '+attrs.feedbackHtml).addClass(disabledClass);
@@ -29,6 +28,7 @@ module.exports = function() {
         }
 
       }, true);
+
     }
   }
 }
