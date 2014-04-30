@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" ng-app="admin/app" class="skin-black wysihtml5-supported  pace-done">
+<html lang="en-US" ng-app="admin/app" class="skin-black wysihtml5-supported pace-done">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>

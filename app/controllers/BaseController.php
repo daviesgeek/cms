@@ -15,7 +15,7 @@ class BaseController extends Controller {
 	public $data = array();
 
 	public function __construct() {
-
+		$this->user = \Sentry::getUser();
 	}
 
 	/**

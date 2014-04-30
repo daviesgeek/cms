@@ -2,6 +2,11 @@
 
 class Pages extends \BaseController {
 
+  public function getEdits($id) {
+    $this->response['data'] = \CMS::getEditsForPage($id);
+    return $this->getResponse();
+  }
+
   /**
    * Display a listing of the resource.
    *

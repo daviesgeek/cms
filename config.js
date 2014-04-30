@@ -7,7 +7,7 @@
 exports.config = {
   conventions: {
     assets: /^app\/assets\/(?!css|js)/,
-    ignored: /^(node_modules|vendor|app\/admin\/styles\/bootstrapsrc|(.*?\/)?[_]\w+)/
+    ignored: /^(node_modules|vendor|(.*?\/)?[_]\w+)/
   },
   modules: {
     definition: 'commonjs',
@@ -21,7 +21,8 @@ exports.config = {
       joinTo: {
         'public.js': /^(app\/assets\/js|bower_components\/(bootstrap|jquery))/,
         '_admin/js/vendor.js': /^bower_components/,
-        '_admin/js/app.js': /^app\/admin/,
+        '_admin/js/app.js': /^app\/admin\//,
+        '_admin/js/edit.js': /^app\/admin-edit\//
       },
       order: {
         before: ['bower_components/jquery/dist/jquery.js']
@@ -31,7 +32,8 @@ exports.config = {
       joinTo: {
         'public.css': /^(app\/assets\/css|bower_components\/(bootstrap|jquery))/,
         '_admin/css/vendor.css': /^bower_components/,
-        '_admin/css/app.css': /^app\/admin/
+        '_admin/css/app.css': /^app\/admin\//,
+        '_admin/css/edit.css': /^app\/admin-edit\//
       },
       order: {
         after: ['app/admin/styles/main.less']
@@ -39,7 +41,8 @@ exports.config = {
     },
     templates: {
       joinTo: {
-        '_admin/js/views.js': /^app\/admin/
+        '_admin/js/views.js': /^app\/admin\//,
+        '_admin/js/views-edit.js': /^app\/admin-edit\//
       }
     }
   },

@@ -43,6 +43,7 @@ Route::group(array(
     Route::resource('users', 'Users');
     Route::resource('session', 'Session');
     Route::resource('pages', 'Pages');
+    Route::get('pages/{pageID}/edits', 'Pages@getEdits');
 
 });
 

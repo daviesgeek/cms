@@ -62,6 +62,14 @@ class CMS{
     return $page;
   }
 
+  public function getEditsForPage($id) {
+    $pageProvider = $this->pageProvider;
+    $page = $pageProvider::with('edits', 'edits.edit_section', 'template')->where('id', $id)->first();
+    $page = $page->toArray();
+    // var_dump($page); exit;
+    return $this->structureEdits($page['edits']);
+  }
+
   /**
    * Restructure the edits array so that the name is the key
    * @param  array $edits

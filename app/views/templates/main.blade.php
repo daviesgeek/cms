@@ -1,5 +1,7 @@
 @extends('layout')
 
+<h1>{{$h1}}</h1>
+
 @section('content')
-{{$edits['main']['text']}}
+  @include('editor')
 @stop
