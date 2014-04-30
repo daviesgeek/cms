@@ -49,7 +49,7 @@
                   option(value="1") Main
             .form-group
               .col-md-9.col-md-offset-3
-                button.btn.btn-primary(type="submit") Create Page
+                button.btn.btn-primary(type="submit", feedback-button="Create Page", feedback-html="Creating..." feedback-tracker="saveTracker")
           .col-md-3
             div.btn-group
               button.btn.btn-default(
@@ -79,9 +79,7 @@
               | Edit
             button.btn.btn-primary(ng-show="editingPages[page.id] == true", ng-click="closeEdit(page)")
               | Close
-            button.btn.btn-danger(ng-if="page.locked != 1", ng-click="deletePage(page)")
-              i.fa.fa-trash-o &nbsp;
-              | Delete
+            button.btn.btn-danger(ng-if="page.locked != 1", ng-click="deletePage(page)", feedback-button='<i class="fa fa-trash-o"></i> &nbsp; Delete', feedback-html="Deleting..." feedback-tracker="deleteTrackers[page.id]")
         form.form.form-horizontal.row(
           ng-class="editingPages[page.id] == true ? 'slide-down' : 'slide-up'",
           ng-submit="updatePage(page)",
@@ -115,7 +113,7 @@
                   option(value="1") Main
             .form-group
               .col-md-9.col-md-offset-3
-                button.btn.btn-primary(type="submit") Save Page
+                button.btn.btn-primary(type="submit", feedback-button="Save", feedback-html="Saving..." feedback-tracker="updateTrackers[page.id]")
           .col-md-3
             div.btn-group
               button.btn.btn-default(
