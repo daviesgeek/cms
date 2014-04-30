@@ -68,7 +68,7 @@
         .display.row
           .col-md-3
             span 
-              i.fa.fa-lock(ng-if="page.locked == 1") &nbsp;
+              i.fa.fa-lock(ng-if="page.locked == 1", tooltip="This page has been locked by the administrator") &nbsp;
               | {{page.name}}
           .col-md-3
             span.label.label-success(ng-if="page.active == 1", ng-click="toggleActive(page, 0)") Visible
