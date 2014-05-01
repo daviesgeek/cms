@@ -1,3 +1,4 @@
 module.exports = {
-  'API_ROOT': 'http://local-epiphany3.app/api'
+  'API_ROOT':    'http://domain.app/path/to/api',
+  'ADMIN_ROOT' : 'http://domain.app/path/to/admin'
 }

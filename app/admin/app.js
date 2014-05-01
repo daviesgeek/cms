@@ -11,8 +11,14 @@ for(name in constants) {
   config.constant(name, constants[name]);
 }
 
+if(constants.ADMIN_ROOT == window.location.pathname){
+  console.log()
+  require('admin/routes/index');
+}else{
+  require('admin/routes-edit/index');
+}
+
 require('admin/common/index');
-require('admin/routes/index');
 
 angular.module("admin/app", [
   "configuration",
@@ -22,6 +28,7 @@ angular.module("admin/app", [
   "ngAnimate",
   "ui.gravatar",
   "ui.bootstrap",
+  "textAngular",
   // routes
   "routes"
 ]).
