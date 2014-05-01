@@ -1,5 +1,5 @@
 @if($editAccess == true)
-<html ng-app="admin-edit/app">  
+<html ng-app="admin/app">  
 @else
 <html>
 @endif
@@ -8,7 +8,11 @@
     {{ HTML::style('assets/public.css') }}
     {{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
     @if ($editAccess == true)
-      {{ HTML::style('assets/_admin/css/edit.css') }}
+      {{ HTML::style('assets/_admin/css/vendor.css') }}
+      {{ HTML::style('assets/_admin/css/app.css') }}
+      {{ HTML::script('assets/_admin/js/vendor.js') }}
+      {{ HTML::script('assets/_admin/js/views.js') }}
+      {{ HTML::script('assets/_admin/js/app.js') }}
     @endif
     <title>{{$title}}</title>
   </head>
@@ -20,11 +24,8 @@
   </body>
   {{ HTML::script('assets/public.js') }}
   @if ($editAccess == true)
-    {{ HTML::script('assets/_admin/js/edit.js') }}
-    {{ HTML::script('assets/_admin/js/views-edit.js') }}
-    {{ HTML::script('assets/_admin/js/vendor.js') }}
     <script type="text/javascript">
-      require('admin-edit/app');
+      require('admin/app');
       window.pageID = {{$pageID}}
     </script>
   @endif
