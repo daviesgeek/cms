@@ -12,10 +12,15 @@ class BaseController extends Controller {
 	);
 
 	public $page;
-	public $data = array();
+	public $viewData = array();
 
 	public function __construct() {
 		$this->user = \Sentry::getUser();
+		if($this->user){
+			$this->addViewData(array('editAccess' => $this->user->hasAccess('edit')));
+		}else{
+			$this->addViewData(array('editAccess' => false));
+		}
 	}
 
 	/**
@@ -27,6 +32,24 @@ class BaseController extends Controller {
 		if ( ! is_null($this->layout)) {
 			$this->layout = View::make($this->layout);
 		}
+	}
+
+	/**
+	 * Adds data to the array of view data
+	 * @param array $array
+	 */
+	public function addViewData($array) {
+		foreach($array as $key => $val){
+			$this->data[$key] = $val;		
+		}
+	}
+
+	/**
+	 * Returns the view data
+	 * @return array
+	 */
+	public function getViewData() {
+		return $this->data;
 	}
 
 	/**
