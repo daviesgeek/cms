@@ -107,7 +107,7 @@ class Login extends \BaseController {
 			}
 			catch(\Exception $e) {
 			  $this->response['code'] = 500;
-			  $this->response['message'] = 'An unexpected error ocurred.';
+			  $this->response['message'] = 'An unexpected error occurred.';
 			}
 		}
 
