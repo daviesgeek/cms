@@ -1,5 +1,7 @@
 #Contributing
 
+Feel free to contribute. There's a reason why this is open source; so *you* can contribute.
+
 ##Standards
 
 ###Code
