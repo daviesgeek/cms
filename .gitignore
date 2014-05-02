@@ -21,7 +21,6 @@ Thumbs.db
 sftp-config.json
 error_log
 /vendor
-/composer.lock
 *.sublime-*
 
 app/config/local
