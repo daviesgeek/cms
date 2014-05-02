@@ -8,14 +8,13 @@
 class Login extends \BaseController {
 
 
-	public $title = 'Login';
-
 	/**
 	 * User facing login page
 	 * @return Response
 	 */
 	public function index() {
-		return View::make('login')->with('title', $this->title);
+		$this->addViewData(array('title' => 'Login'));
+		return View::make('login', $this->getViewData());
 	}
 
 	/**
