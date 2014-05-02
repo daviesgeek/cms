@@ -1,4 +1,4 @@
-<?php namespace CMS;
+<?php namespace Cms;
 
 /**
  * Main CMS class
