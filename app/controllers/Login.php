@@ -52,7 +52,8 @@ class Login extends \BaseController {
 			$user = new \User;
 
 			// Find the user by the email address and assign the username to a new variable
-			$username = $user->findUserByEmail($credentials['username'])['username'];
+			$username = $user->findUserByEmail($credentials['username']);
+			$username = $username['username'];
 
 			// Set the username on the $credentials array (it's now an email address)
 			$credentials['username'] = $username;
