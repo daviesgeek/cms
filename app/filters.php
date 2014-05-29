@@ -89,7 +89,7 @@ Route::filter('csrf', function()
 */
 Route::filter('loggedIn', function()
 {
- if(Sentry::check() != 1) {
+ if( ! Sentry::check() ) {
  	return Redirect::to('login');
  }
 });
