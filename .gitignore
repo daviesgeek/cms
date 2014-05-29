@@ -30,3 +30,5 @@ environment.php
 node_modules
 bower_components
 app/admin/configuration/index.js
+
+.env.*.php
