@@ -12,7 +12,6 @@ for(name in constants) {
 }
 
 if(constants.ADMIN_ROOT == window.location.pathname){
-  console.log()
   require('admin/routes/index');
 }else{
   require('admin/routes-edit/index');
