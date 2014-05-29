@@ -11,9 +11,10 @@ class Groups extends Seeder {
             'id' => 1,
             'name' => 'Administrators',
             'permissions' => '{
-                "admin":1,
-                "admin.home":1
-                }',
+  "admin": 1,
+  "admin.home": 1,
+  "edit": 1
+}',
             'created_at' => '2014-04-05 23:48:45'
           )
         );
