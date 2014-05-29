@@ -1,6 +1,6 @@
 <?php namespace Api;
 
-class Session extends \BaseController {
+class Session extends ApiBaseController {
 
 	/**
 	 * Display a listing of the resource.

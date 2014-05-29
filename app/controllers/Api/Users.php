@@ -1,6 +1,6 @@
 <?php namespace Api;
 
-class Users extends BaseController {
+class Users extends ApiBaseController {
 
 	/**
 	 * Display a listing of the resource.

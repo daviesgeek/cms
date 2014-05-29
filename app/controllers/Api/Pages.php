@@ -1,6 +1,6 @@
 <?php namespace Api;
 
-class Pages extends \BaseController {
+class Pages extends ApiBaseController {
 
   public function getEdits($id) {
     $this->response['data'] = \CMS::getEditsForPage($id);
