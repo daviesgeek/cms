@@ -15,7 +15,7 @@ class BaseController extends Controller {
 	public $viewData = array();
 
 	public function __construct() {
-		$this->user = \Sentry::getUser();
+		$this->user = Sentry::getUser();
 		if($this->user){
 			$this->addViewData(array('editAccess' => $this->user->hasAccess('edit')));
 		}else{
@@ -71,39 +71,61 @@ class BaseController extends Controller {
 	 * @return view|response
 	 */
 	public function getResponse() {
-		if(!empty($this->response)) {
 
-			$meta = isset($this->response['meta']) ? $this->response['meta'] : null;
+		// Get the current route name (corresponds with the Sentry permission name)
+		$route = Route::currentRouteName();
+
+		$meta = isset($this->response['meta']) ? $this->response['meta'] : null;
+
+		$wrapper = array(
+			'status'    => array(
+				'code'    => $this->response['code'],
+				'message' => $this->response['message']
+			),
+			'info'      => null,
+			'data'      => $this->response['data'],
+			'meta'      => $meta
+		);
+
+		global $startTime;
+		if(isset($startTime) && $startTime) {
+			$wrapper['info']['execTime'] = round((microtime(true) - $startTime)*1000, 2).'ms';
+			$wrapper['info']['peakMemory'] = (memory_get_peak_usage(true)/1024).'KB';
+		}
+
+		$accessAllow = array(
+			'Access-Control-Allow-Origin' => Config::get('app.Access-Control-Allow-Origin'),
+			'Access-Control-Allow-Credentials' => 'true',
+			'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
+			'Access-Control-Allow-Headers' => 'Content-Type'
+		);
+
+
+		// If the current user does not have access to this route (or isn't logged in, throw a 403
+		if(!Sentry::getUser()->hasAccess($route)){
 
 			$wrapper = array(
 				'status'    => array(
-					'code'    => $this->response['code'],
-					'message' => $this->response['message']
+					'code'    => '403',
+					'message' => Lang::get('errors.403json')
 				),
 				'info'      => null,
-				'data'      => $this->response['data'],
-				'meta'      => $meta
+				'data'      => array(),
+				'meta'      => array()
 			);
+		  $accessAllow = array();
 
-
-			global $startTime;
-			if(isset($startTime) && $startTime) {
-				$wrapper['info']['execTime'] = round((microtime(true) - $startTime)*1000, 2).'ms';
-				$wrapper['info']['peakMemory'] = (memory_get_peak_usage(true)/1024).'KB';
-			}
-
-			return Response::json(
-				$wrapper,
-				$this->response['code'],
-				array(
-					'Access-Control-Allow-Origin' => Config::get('app.Access-Control-Allow-Origin'),
-					'Access-Control-Allow-Credentials' => 'true',
-					'Access-Control-Allow-Methods' => 'POST, GET, OPTIONS, PUT, DELETE',
-					'Access-Control-Allow-Headers' => 'Content-Type'
-				)
-			);
-
+		  // If the user isn't logged in, change the message
+		  if(!Sentry::check()){
+		    $this->response['message'] = \Lang::get('errors.403login');
+		  }
 		}
+
+		return Response::json(
+			$wrapper,
+			$this->response['code'],
+			$accessAllow
+		);
 	}
 
 	public function missingMethod($parameters = array()) {
